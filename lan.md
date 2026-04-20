@@ -278,3 +278,4 @@ copy running-config startup-config
 Проверка:
 
 <img width="477" height="248" alt="image" src="https://github.com/user-attachments/assets/95bc405e-ae0e-495b-9780-ac8f6ac3146e" />
+
