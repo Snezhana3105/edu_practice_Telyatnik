@@ -116,4 +116,62 @@ R3:
 
 <img width="596" height="208" alt="image" src="https://github.com/user-attachments/assets/23c8d571-1cfe-458e-8c4f-4c4b41c49e26" />
 
+Проверка:
+1. Соседства OSPF
+
+<img width="652" height="180" alt="image" src="https://github.com/user-attachments/assets/849b3436-fcd4-47d5-ab41-6a51ee7c6699" />
+
+
+2. Маршруты OSPF в таблице маршрутизации
+
+<img width="591" height="187" alt="image" src="https://github.com/user-attachments/assets/5ea817de-d591-4f62-8002-2c21d9ea0576" />
+
+
+3. Маршрут по умолчанию (шлюз)
+
+<img width="561" height="107" alt="image" src="https://github.com/user-attachments/assets/90af03a3-67be-4a6f-8536-cb90687b2bec" />
+
+
+#### Часть 4
+Шаг 1: Настроим BGP между R3 и R1973 - Выполним по шагам ниже.
+Шаг 2: Укажем, что все маршрутизаторы, использующие протокол OSPF, находятся в автономной системе BGP (AS) номер 3
+Запускаем процесс BGP на R3 и указываем, что он находится в автономной системе (AS) номер 3. В эту же AS попадают все роутеры с OSPF (R1, R2, R3).
+
+<img width="545" height="134" alt="image" src="https://github.com/user-attachments/assets/f9b81400-cf60-49ee-8147-3337060ef6f6" />
+
+
+Шаг 3: Маршрутизатор R1973 находится в автономной системе BGP (AS) номер 1973
+
+<img width="555" height="164" alt="image" src="https://github.com/user-attachments/assets/c1ed28f4-4b16-4fce-80ad-35c9dd3fe971" />
+
+R1973 находится в отдельной AS - номер 1973. Это будет внешнее BGP-соседство, так как AS разные (3 и 1973).
+Шаг 4: Настроим маршрутизатор R3 для установления внешнего BGP-соседства с маршрутизатором R1973.
+
+<img width="536" height="133" alt="image" src="https://github.com/user-attachments/assets/e16ef61a-7ba8-41e3-891f-98a338a5bb74" />
+
+
+Шаг 5: Настроим маршрутизатор R1973 так, чтобы он объявил свой loopback- интерфейс маршрутизатору R3.
+
+<img width="588" height="166" alt="image" src="https://github.com/user-attachments/assets/09fff9e4-a857-41ab-b742-94bc3f0479c1" />
+
+
+Шаг 6: Настроим маршрутизатор R1973 так, чтобы маршрут по умолчанию указывал на маршрутизатор R3.
+
+<img width="530" height="138" alt="image" src="https://github.com/user-attachments/assets/872b2c87-0821-4e78-be4c-949f25a4fe32" />
+
+Проверка:
+1. BGP-соседство
+
+<img width="639" height="281" alt="image" src="https://github.com/user-attachments/assets/0d8ed2d4-810e-4466-9bb4-3fb1e23a2318" />
+
+
+2. Какие маршруты получил R3 через BGP
+
+<img width="602" height="179" alt="image" src="https://github.com/user-attachments/assets/e8b14a6c-856f-4f3c-91f0-f28e871c0997" />
+
+
+3. Маршрут по умолчанию на R1973
+
+<img width="548" height="89" alt="image" src="https://github.com/user-attachments/assets/d6a1bd54-6e7e-4497-8b69-79485cc912ef" />
+
 
