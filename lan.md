@@ -176,3 +176,47 @@ SW1
 
 Сохраняем конфигурацию на SW0 и SW1 командой 
 copy running-config startup-config
+
+### Часть 2: Настройка маршрутизатора R1
+ Шаг 1. Настройка интерфейса f0/1
+ 
+<img width="616" height="187" alt="image" src="https://github.com/user-attachments/assets/2cbbdc94-03e8-487f-ab70-6f45c258510c" />
+
+Шаг 2. Настройка маршрутизации между VLAN
+1. Включим физический интерфейс, который смотрит в сторону SW0:
+   
+<img width="619" height="170" alt="image" src="https://github.com/user-attachments/assets/82161da9-48b3-453b-89a8-3c25bfa63e96" />
+
+2. Создадим сабинтерфейсы для каждого VLAN. Тег должен совпадать с номером VLAN.
+
+<img width="717" height="590" alt="image" src="https://github.com/user-attachments/assets/0987b273-09d3-4396-a8d3-54c9f85384af" />
+
+Шаг 3. Настройка DHCP-сервера на R1
+Для каждого VLAN создаем пул адресов
+
+<img width="447" height="326" alt="image" src="https://github.com/user-attachments/assets/ef52ded2-fcd9-46ab-ba57-5f861e17cbe7" />
+
+Исключаем адреса, которые не должны выдаваться
+
+<img width="546" height="141" alt="image" src="https://github.com/user-attachments/assets/1a388f94-5c90-4d72-b2f5-d0ef7d92b36f" />
+
+Проверка, что у PC0/1/2/3/4/5 выданы правильные айпи-адреса
+
+<img width="378" height="327" alt="image" src="https://github.com/user-attachments/assets/17568df9-fe0a-4185-beea-25b6b2046fa0" />
+
+<img width="410" height="296" alt="image" src="https://github.com/user-attachments/assets/27f91615-4799-4220-8db2-27436ddf5b50" />
+
+<img width="370" height="315" alt="image" src="https://github.com/user-attachments/assets/96c0eb9d-ebb3-49c3-875e-d5ca287aaf7e" />
+
+<img width="376" height="322" alt="image" src="https://github.com/user-attachments/assets/a519f3a1-a782-4b4e-a044-712aa3fdd65f" />
+
+<img width="353" height="343" alt="image" src="https://github.com/user-attachments/assets/401e194a-1683-46cc-895b-ec59baf84650" />
+
+<img width="341" height="345" alt="image" src="https://github.com/user-attachments/assets/9f0d3e7c-252b-4ff3-a539-5f8c5895da66" />
+
+Шаг 4. Проверка пинга
+У меня 3.0.0.100, адрес 3.0.0.101 тоже доступен, так как DHCP работает корректно.
+
+<img width="482" height="221" alt="image" src="https://github.com/user-attachments/assets/8c7b06d0-bb50-4ca8-854d-384fb6236739" />
+
+<img width="509" height="222" alt="image" src="https://github.com/user-attachments/assets/653a5549-cb5e-4ff7-bdfe-f417bdff96aa" />
