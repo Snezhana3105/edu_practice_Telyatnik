@@ -220,3 +220,61 @@ copy running-config startup-config
 <img width="482" height="221" alt="image" src="https://github.com/user-attachments/assets/8c7b06d0-bb50-4ca8-854d-384fb6236739" />
 
 <img width="509" height="222" alt="image" src="https://github.com/user-attachments/assets/653a5549-cb5e-4ff7-bdfe-f417bdff96aa" />
+
+# Часть 3
+
+Шаг 1. Настройка имени хоста
+
+<img width="561" height="85" alt="image" src="https://github.com/user-attachments/assets/c3100aa9-c429-4854-91a8-b608fc88ebf7" />
+
+Шаг 2. Включение маршрутизации
+
+<img width="273" height="17" alt="image" src="https://github.com/user-attachments/assets/b4f5268e-660f-4b21-a9ba-300dbfada967" />
+
+Шаг 3. Создание VLAN 100 и 200 с именами
+
+<img width="344" height="136" alt="image" src="https://github.com/user-attachments/assets/b8845275-10ff-4a94-9b4a-cdf6463b38fe" />
+
+Проверка:
+
+<img width="643" height="353" alt="image" src="https://github.com/user-attachments/assets/123b737f-8be9-4d27-9969-edf8b408bc3e" />
+
+Шаг 4. Назначение портов доступа в VLAN
+
+<img width="456" height="198" alt="image" src="https://github.com/user-attachments/assets/cc125127-291b-49b3-9805-629dd16ca43f" />
+
+Проверка:
+
+<img width="635" height="339" alt="image" src="https://github.com/user-attachments/assets/33039d41-b53e-445b-9c05-7ce94cb937f7" />
+
+Шаг 5. Создание SVI для VLAN 100 и 200
+
+<img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/baeaff76-d925-4578-9929-549e5d6a0fef" />
+
+Проверка:
+
+<img width="668" height="498" alt="image" src="https://github.com/user-attachments/assets/f5a2141f-6086-4c65-b3f8-4e8499dfeaf9" />
+
+Шаг 6. Настройка интерфейсов 3-го уровня
+
+<img width="766" height="363" alt="image" src="https://github.com/user-attachments/assets/96e4670a-daec-4559-bb93-4afc4d0a4621" />
+
+Проверка:
+
+<img width="694" height="404" alt="image" src="https://github.com/user-attachments/assets/9e148e8f-c737-4406-9da9-3046827eeb85" />
+
+Шаг 7. Настройка PC6 и проверка пинга
+
+<img width="444" height="325" alt="image" src="https://github.com/user-attachments/assets/9b7ee629-d121-45ca-9bc3-8b38bb963674" />
+
+ Ответ от шлюза:
+
+ <img width="488" height="281" alt="image" src="https://github.com/user-attachments/assets/67718232-bf1b-4ab5-b164-1956b902b13b" />
+
+Также заодно настроили PC7
+
+<img width="455" height="336" alt="image" src="https://github.com/user-attachments/assets/3cce70ed-6ba1-48cf-aa27-6c3cc4a14e53" />
+
+Проверка:
+
+<img width="477" height="248" alt="image" src="https://github.com/user-attachments/assets/95bc405e-ae0e-495b-9780-ac8f6ac3146e" />
