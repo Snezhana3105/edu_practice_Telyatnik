@@ -174,4 +174,56 @@ R1973 находится в отдельной AS - номер 1973. Это бу
 
 <img width="548" height="89" alt="image" src="https://github.com/user-attachments/assets/d6a1bd54-6e7e-4497-8b69-79485cc912ef" />
 
+#### Часть 5
+Шаг 1: Убедимся, что IOS на R3 поддерживает все команды VOIP и расширенные настройки безопасности, используя для этого оценочную лицензию.
+
+<img width="907" height="540" alt="image" src="https://github.com/user-attachments/assets/9516c74a-ce46-488c-800e-36aa10e09b0b" />
+
+<img width="555" height="384" alt="image" src="https://github.com/user-attachments/assets/70ea5edf-5f18-4ed2-9b25-ba255cf1352d" />
+
+Шаг 2: Установим лицензии UCK9
+
+<img width="551" height="112" alt="image" src="https://github.com/user-attachments/assets/d0a40785-0b23-4347-bf05-86e6f8218810" />
+
+Шаг 3: Установим лицензии securityk9
+
+<img width="1202" height="721" alt="image" src="https://github.com/user-attachments/assets/cd7435d2-4ada-4e77-8a23-60e41c85bb6d" />
+
+Шаг 4: Сохраним конфигурацию
+
+<img width="448" height="142" alt="image" src="https://github.com/user-attachments/assets/411d3be9-6de3-4c60-ad2c-44cb9ae877c4" />
+
+Шаг 5: Перезагрузим маршрутизатор
+команда: license boot module _серия роутера_ technology-package _лицензия_
+
+<img width="693" height="337" alt="image" src="https://github.com/user-attachments/assets/4ca26ce3-a088-4ecd-b9a1-5883d02b0cc2" />
+
+Проверка:
+
+<img width="916" height="222" alt="image" src="https://github.com/user-attachments/assets/6c3cfd0d-5357-4159-8a43-5b0b6033901c" />
+
+#### Часть 6
+Шаг 1: Настроим R1 в качестве DHCP-ретранслятора
+Шаг 1.1: Убедимся, что DHCP-сервер уже есть на схеме
+
+<img width="484" height="343" alt="image" src="https://github.com/user-attachments/assets/0cd06fed-2dde-4863-8741-03cdf8c9c0d6" />
+
+Шаг 1.2: Настройка IP-адреса на DHCP-сервере
+
+<img width="432" height="302" alt="image" src="https://github.com/user-attachments/assets/4cbbb8b5-1e38-4cfe-9eaf-03e99e479ac0" />
+
+Шаг 1.3: Настройка DHCP-пула на сервере
+
+<img width="525" height="527" alt="image" src="https://github.com/user-attachments/assets/e90c6784-b629-4639-8f4a-123f81963a1d" />
+
+Шаг 1.4: Настройка DHCP-ретранслятора на R1
+
+<img width="581" height="154" alt="image" src="https://github.com/user-attachments/assets/6643ffc2-df5c-4f76-bc34-b9aeab77bab6" />
+
+Команда ip helper-address 10.23.23.100 заставляет R1 пересылать широковещательные DHCP-запросы на указанный IP-адрес DHCP-сервера.
+Шаг 2: Убедимся, что PC0 может получить IPv4 от DHCP-сервера с IP 10.23.23.100.
+Проблема: R2 и R3 в одной зоне 23, но R2 не отправляет summary-маршруты. У меня из за этого не правильный IP-адресс был.
+Решение: clear ip ospf process - перезапускаем OSPF на R2
+
+<img width="372" height="225" alt="image" src="https://github.com/user-attachments/assets/4326fe10-70e0-4751-ad73-eb3552f557ea" />
 
