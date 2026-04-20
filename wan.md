@@ -227,3 +227,55 @@ R1973 находится в отдельной AS - номер 1973. Это бу
 
 <img width="372" height="225" alt="image" src="https://github.com/user-attachments/assets/4326fe10-70e0-4751-ad73-eb3552f557ea" />
 
+#### Часть 7:
+Шаг 1: Настроим маршрутизаторы R1, R2, R3, R1973 с IPv6-адресами
+Шаг 1.1: Включение IPv6-маршрутизации на всех роутерах
+
+<img width="532" height="158" alt="image" src="https://github.com/user-attachments/assets/5fd56a00-7a0b-4718-97b5-4cd4ce615f34" />
+
+<img width="576" height="152" alt="image" src="https://github.com/user-attachments/assets/e03a62b8-0f58-4ec6-8702-852cef90d131" />
+
+<img width="560" height="116" alt="image" src="https://github.com/user-attachments/assets/67d927a4-2d01-42bf-b8f8-5d98e5ea9bbe" />
+
+<img width="529" height="157" alt="image" src="https://github.com/user-attachments/assets/ce142eca-a5f7-4427-8799-1ae5b462ba70" />
+
+Шаг 1.2: Настройка R1
+
+<img width="557" height="229" alt="image" src="https://github.com/user-attachments/assets/4bb649d3-ffbe-4a63-abf7-f2005a44a3d5" />
+
+Шаг 1.3: Настройка R2
+
+<img width="550" height="214" alt="image" src="https://github.com/user-attachments/assets/4e5e7360-c583-4198-a897-09aabf9c985c" />
+
+Шаг 1.4: Настройка R3
+
+<img width="537" height="213" alt="image" src="https://github.com/user-attachments/assets/b1d249e0-5e1c-4dc3-852d-d08c78261cdd" />
+
+Шаг 1.5: Настройка R1973
+
+<img width="536" height="212" alt="image" src="https://github.com/user-attachments/assets/50797431-9b5c-4c50-904c-ab20ea6ddc05" />
+
+Шаг 2: Убедимся, что на всех маршрутизаторах включена возможность маршрутизации IPv6. - Уже сделали это в Шаге 1.1 (ipv6 unicast-routing).
+Проверка:
+
+<img width="427" height="59" alt="image" src="https://github.com/user-attachments/assets/70ac7c48-3588-4fe4-b701-f70cb4611413" />
+
+Шаг 3: Убедимся, что интерфейс f0/0 на маршрутизаторе R1 использует локальный
+адрес канала fe80::1.
+
+<img width="517" height="382" alt="image" src="https://github.com/user-attachments/assets/e7fd71e4-5226-446b-8814-7e06ae6b2ac6" />
+
+Шаг 4: Убедимся, что R1 использует функцию EUI-64 для своего глобального адреса
+на интерфейсе f0/0.
+
+<img width="527" height="431" alt="image" src="https://github.com/user-attachments/assets/b59d7a38-dd37-4919-9809-ef26516ffc6e" />
+
+Дополнительная проверка: Маршрут по умолчанию IPv6 на R3
+По заданию из файла ipv6.txt, на R3 нужно добавить маршрут по умолчанию:
+
+<img width="536" height="123" alt="image" src="https://github.com/user-attachments/assets/2772f09c-1183-4412-abd3-97d1534a635a" />
+
+Проверка:
+
+<img width="655" height="374" alt="image" src="https://github.com/user-attachments/assets/7c3b9abb-3f3b-4121-92fd-432274ff729a" />
+
