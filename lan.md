@@ -509,103 +509,161 @@ copy running-config startup-config
 
 <img width="644" height="64" alt="Pasted_image_20260415165619" src="https://github.com/user-attachments/assets/850cc98a-df62-4741-8b78-73458a0f4031" />
 
+*Пинг с MLS до R2*
+
 Настройка Server0(на всякий случай):
 
 <img width="353" height="303" alt="Pasted_image_20260415165740" src="https://github.com/user-attachments/assets/e229826c-6acb-44be-9ec6-65f3e7a46f8f" />
+
+*Настройка IP на Server0*
 
 Сервер использует виртуальный шлюз 10.0.0.1. Если R2 упадёт, R3 автоматически подхватит этот айпи, и сервер не заметит сбоя.
 Проверка связности с сервера:
 
 <img width="491" height="680" alt="Pasted_image_20260415170000" src="https://github.com/user-attachments/assets/762485a9-03c7-409c-b39b-46bd96d3e4b9" />
 
+*Проверка связности с сервера*
+
 # Часть 5
 Шаг 1: Настройка EIGRP на R1,R2,R3,MLS
 
 <img width="586" height="311" alt="Pasted_image_20260415171104" src="https://github.com/user-attachments/assets/af3f7615-8737-4f1c-be02-72f944724c6f" />
 
+*Настройка EIGRP на R1*
+
 <img width="547" height="246" alt="image" src="https://github.com/user-attachments/assets/70eb8118-0043-4342-b895-0668fac42ced" />
+
+*Настройка EIGRP на R2*
 
 <img width="628" height="310" alt="image" src="https://github.com/user-attachments/assets/b4ee847e-a468-4196-9d4c-abfd211a3c38" />
 
+*Настройка EIGRP на R3*
+
 <img width="646" height="443" alt="image" src="https://github.com/user-attachments/assets/fbfd93b7-6a44-4ee3-be8b-ddca925b705a" />
+
+*Настройка EIGRP на MLS*
 
 Шаг 2. Проверка соседства EIGRP
 <img width="636" height="131" alt="image" src="https://github.com/user-attachments/assets/aff6edec-2f68-44fd-8240-1641027964aa" />
 
+*Проверка соседей EIGRP на R1*
+
 <img width="620" height="150" alt="image" src="https://github.com/user-attachments/assets/942ea1be-c7d7-425b-9bff-215c0e332a23" />
+
+*Проверка соседей EIGRP на R2*
 
 <img width="611" height="182" alt="image" src="https://github.com/user-attachments/assets/73f10585-c302-4b7c-b618-3ae98a712d7a" />
 
+*Проверка соседей EIGRP на R3*
+
 <img width="616" height="159" alt="image" src="https://github.com/user-attachments/assets/4109f0f9-6271-4f50-97df-103556dc648e" />
+
+*Проверка соседей EIGRP на MLS*
 
 Проверка таблицы маршрутизации:
 
 <img width="628" height="177" alt="image" src="https://github.com/user-attachments/assets/69f048b4-836e-414b-aded-56658efaa9de" />
 
+*Проверка таблицы маршрутизации*
+
 Пинг с сервера:
 
 <img width="463" height="236" alt="image" src="https://github.com/user-attachments/assets/ce3ef3fc-f581-4b56-9cfd-4ab70f090726" />
 
+*Пинг с сервера до одного адреса*
+
 <img width="469" height="217" alt="image" src="https://github.com/user-attachments/assets/90393751-c438-4f8b-be7a-02f5373ab2b9" />
 
+*Пинг с сервера до другого адреса*
+
 <img width="462" height="218" alt="image" src="https://github.com/user-attachments/assets/8af63b16-d2bd-404b-ad30-cfa5608ce570" />
+
+*Пинг с сервера до третьего адреса*
 
 #### Часть 6
 Шаг 1. Пропинговать с Server0 (10.0.0.100) ПК в VLAN 2 (2.0.0.100)
 
 <img width="474" height="234" alt="image" src="https://github.com/user-attachments/assets/15deb6db-9f96-47b0-822a-2fabd8c4517a" />
 
+*Пинг с Server0 до ПК в VLAN 2*
+
 Шаг 2. Настроить ACL на SW1, чтобы **только** ПК 2.0.0.100 имел доступ к веб-серверу 10.0.0.100.
 Убедимся, что веб-сервер работает на Server0
 
 <img width="390" height="229" alt="image" src="https://github.com/user-attachments/assets/e21c738f-0255-4aee-b2d0-0bd03a970eb7" />
 
+*Проверка работы веб-сервера на Server0*
+
 <img width="605" height="227" alt="image" src="https://github.com/user-attachments/assets/f798df70-c53a-4780-b9ef-1564c7d90b91" />
 
-Шаг 3. Ограничение SSH на SW1
+*Проверка работы веб-сервера на Server0*
+
+Шаг 3. Настройка ACL на SW1:
 
 <img width="629" height="220" alt="image" src="https://github.com/user-attachments/assets/34cc2d0e-7806-4e8e-ae71-d62866dea16e" />
+
+*Настройка ACL на SW1 для ограничения доступа*
 
 Проверка:
 
 <img width="1389" height="409" alt="image" src="https://github.com/user-attachments/assets/7346de89-fe0d-4ef0-92dd-b06dfc8bb27f" />
+
+*Проверка ACL (доступ разрешён только нужному ПК)*
 
 #### Часть 7
 Шаг 1. Создание loopback-интерфейса на R1
 
 <img width="639" height="340" alt="image" src="https://github.com/user-attachments/assets/2d771229-e9fd-46d2-adc6-6b1f464796fe" />
 
+*Создание loopback на R1*
+
 Проверка:
 
 <img width="625" height="58" alt="image" src="https://github.com/user-attachments/assets/a71047d3-c9a0-4719-8b85-a118baab51bf" />
+
+*Проверка loopback на R1*
 
 Шаг 2. Создание loopback-интерфейса на R3
 
 <img width="641" height="327" alt="image" src="https://github.com/user-attachments/assets/1fecf02f-625e-4ef5-b49e-b3bff7473174" />
 
+*Создание loopback на R3*
+
 Проверка:
 
 <img width="636" height="76" alt="image" src="https://github.com/user-attachments/assets/ae2f3a39-dcd8-4fdb-bb1e-805d23c0ec4a" />
+
+*Проверка loopback на R3*
 
 Шаг 3. R1 и R3 объявляют loopback-интерфейсы друг другу, используя RIPv2.
 На R1:
 
 <img width="557" height="222" alt="image" src="https://github.com/user-attachments/assets/f562576f-7422-46cc-96ae-f3d85f0cb5cb" />
 
+*Настройка RIPv2 на R1*
+
 На R3:
 
 <img width="566" height="237" alt="image" src="https://github.com/user-attachments/assets/a5eacb05-fa65-4a3e-87a6-cfcd561f8d2b" />
+
+*Настройка RIPv2 на R3*
 
 Шаг 4. Проверка, что RIPv2 работает ТОЛЬКО на R1 и R3
 Должно быть пусто:
 
 <img width="1381" height="681" alt="image" src="https://github.com/user-attachments/assets/9c54ab41-32ee-4d13-8593-c8f08826329a" />
 
+*Проверка, что RIPv2 нет на других устройствах*
+
 RIPv2 работает ТОЛЬКО на R1 и R3:
 
 <img width="511" height="120" alt="image" src="https://github.com/user-attachments/assets/4814b775-19c0-41e4-a7ec-546e538e825e" />
 
+*Проверка RIPv2 на R1*
+
 <img width="501" height="105" alt="image" src="https://github.com/user-attachments/assets/11e8c825-a566-4a34-9f09-6ed111c82a57" />
+
+*Проверка RIPv2 на R3*
 
 Шаг 5: IP-адреса при использовании туннелей должны быть 200.200.200.#/24, где # - это ID маршрутизатора.
 Создание туннеля между R1 и R3
@@ -613,38 +671,58 @@ RIPv2 работает ТОЛЬКО на R1 и R3:
 
 <img width="625" height="68" alt="image" src="https://github.com/user-attachments/assets/2699c739-723a-43c1-b56d-30c6393cafab" />
 
+*IP адрес интерфейса Fa0/1 на R1*
+
 Теперь создаём туннель:
 
 <img width="642" height="290" alt="image" src="https://github.com/user-attachments/assets/8d977c58-2d36-4d7f-8c4b-f5436116d154" />
+
+*Создание туннеля на R1*
 
 На R3:
 Узнаём IP-адрес интерфейса, который смотрит в сторону MLS (Fa0/1):
 
 <img width="605" height="56" alt="image" src="https://github.com/user-attachments/assets/02c05dc1-8eb6-4e8a-a0e4-560ff6f65ce0" />
 
+*IP адрес интерфейса Fa0/1 на R3*
+
 Теперь создаём туннель:
 
 <img width="621" height="282" alt="image" src="https://github.com/user-attachments/assets/48c0a0e1-7276-4b65-a542-e8477e8f39c0" />
+
+*Создание туннеля на R3*
 
 Проверка туннеля
 
 <img width="1372" height="671" alt="image" src="https://github.com/user-attachments/assets/bc06cc99-ac9c-4ed4-89cd-920cd7618f7b" />
 
+*Проверка состояния туннеля*
+
 Проверка связности через туннель:
 
 <img width="631" height="158" alt="image" src="https://github.com/user-attachments/assets/2a52efb1-a388-4658-99ed-2071d6d097fe" />
 
+*Пинг через туннель с R1*
+
 <img width="606" height="158" alt="image" src="https://github.com/user-attachments/assets/3026e905-ce4b-4cc2-a7c6-945e704142bd" />
+
+*Пинг через туннель с R3*
 
 Проверка RIPv2 и маршрутов
 
 <img width="582" height="80" alt="image" src="https://github.com/user-attachments/assets/7d03ddd0-1b92-4ab2-b649-28ccd1d0f44b" />
 
+*Проверка RIP-маршрутов на R1*
+
 <img width="588" height="111" alt="image" src="https://github.com/user-attachments/assets/5fbd3af9-2bec-4597-9504-f69b69622999" />
+
+*Проверка RIP-маршрутов на R3*
 
 Шаг 6. Расширенный ping для проверки
 
 <img width="629" height="326" alt="image" src="https://github.com/user-attachments/assets/ab705c44-b07b-4384-869e-f38c66e06c5d" />
+
+*Расширенный ping через туннель*
 
 #### Часть 8
 Шаг 1: Настройка NTP и Syslog на R1, R2, R3, MLS
@@ -652,81 +730,125 @@ RIPv2 работает ТОЛЬКО на R1 и R3:
 
 <img width="699" height="627" alt="image" src="https://github.com/user-attachments/assets/278f271c-6919-4250-8e99-899d916bab0b" />
 
+*Настройка Server0 как NTP-сервера*
+
 1.2: Настройка NTP-клиента на R1
 
 <img width="510" height="136" alt="image" src="https://github.com/user-attachments/assets/1a4d2da9-9e58-4b9f-b2b4-e2d39dcb3311" />
+
+*Настройка NTP-клиента на R1*
 
 1.3: Настройка NTP-клиента на R2
 
 <img width="537" height="294" alt="image" src="https://github.com/user-attachments/assets/45fdbc1a-52d7-4552-b6cc-5e79e7584fcf" />
 
+*Настройка NTP-клиента на R2*
+
 1.4: Настройка NTP-клиента на R3
 
 <img width="546" height="285" alt="image" src="https://github.com/user-attachments/assets/83fdffed-abfe-44fe-af08-324826fab858" />
 
+*Настройка NTP-клиента на R3*
+
 1.5: Настройка NTP-клиента на MLS
 
 <img width="565" height="262" alt="image" src="https://github.com/user-attachments/assets/036b716a-7b73-462b-8877-a97368537d00" />
+
+*Настройка NTP-клиента на MLS*
 
 1.6: Проверка NTP
 На R1, R2, R3, MLS:
 
 <img width="1127" height="225" alt="image" src="https://github.com/user-attachments/assets/e89da7ea-4e91-4c80-9a45-abc0e61d9e97" />
 
+*Проверка NTP на R1*
+
 <img width="1181" height="229" alt="image" src="https://github.com/user-attachments/assets/4a002956-5c77-4cf0-aa42-b2e90971fe66" />
+
+*Проверка NTP на R2*
 
 <img width="1128" height="229" alt="image" src="https://github.com/user-attachments/assets/fcd94f6c-1d97-431f-baaa-94ca4fe868d0" />
 
+*Проверка NTP на R3*
+
 <img width="1130" height="230" alt="image" src="https://github.com/user-attachments/assets/91aa599f-dfbe-4ae4-a6e3-94716853dc41" />
+
+*Проверка NTP на MLS*
 
 1.7: Настройка Syslog на всех устройствах
 На R1, R2, R3, MLS:
 
 <img width="652" height="267" alt="image" src="https://github.com/user-attachments/assets/133d86fb-ce49-4ea7-8c2f-dd39e583a409" />
 
+*Настройка Syslog на R1*
+
 <img width="689" height="339" alt="image" src="https://github.com/user-attachments/assets/b9fed924-b0b2-477d-acd1-825b81923306" />
+
+*Настройка Syslog на R2*
 
 <img width="683" height="322" alt="image" src="https://github.com/user-attachments/assets/de72aacf-affc-47f9-851d-6151e427de40" />
 
+*Настройка Syslog на R3*
+
 <img width="661" height="363" alt="image" src="https://github.com/user-attachments/assets/adec2a65-5179-48fa-934a-647af93eded3" />
+
+*Настройка Syslog на MLS*
 
 1.8: Настройка Server0 как Syslog-сервера
 
 <img width="687" height="546" alt="image" src="https://github.com/user-attachments/assets/1d292e21-a939-4d23-b748-2771b6618f7f" />
 
+*Настройка Server0 как Syslog-сервера*
+
 1.9: Проверка Syslog
 
 <img width="1919" height="535" alt="image" src="https://github.com/user-attachments/assets/a250924c-e87a-4a72-8700-7d044a472221" />
+
+*Проверка приёма Syslog сообщений*
 
 Шаг 2: Включение SNMP на R2 и R3
 На R2:
 
 <img width="639" height="307" alt="image" src="https://github.com/user-attachments/assets/049d86d5-c42e-4958-9623-48eaf23e3a3a" />
 
+*Настройка SNMP на R2*
+
 На R3:
 
 <img width="616" height="294" alt="image" src="https://github.com/user-attachments/assets/be8cb005-9f02-4320-85e4-66363c209777" />
+
+*Настройка SNMP на R3*
 
 Шаг 3: Настройка AAA и Telnet на R3
 3.1: Настройка Server0 как AAA-сервера
 
 <img width="697" height="701" alt="image" src="https://github.com/user-attachments/assets/1757cbb8-e8b1-4b78-b360-dfc33c08df94" />
 
+*Настройка Server0 как AAA-сервера*
+
 3.2: Настройка локального пользователя на R3
 
 <img width="552" height="186" alt="image" src="https://github.com/user-attachments/assets/51abea6c-9ea1-4192-bece-0b2272f64596" />
+
+*Создание локального пользователя на R3*
 
 3.3: Настройка AAA на R3
 
 <img width="616" height="168" alt="image" src="https://github.com/user-attachments/assets/69cd035e-1492-4c10-a63c-84c053bbe196" />
 
+*Настройка AAA на R3*
+
 3.4: Включение Telnet на R3
 
 <img width="544" height="270" alt="image" src="https://github.com/user-attachments/assets/3a07b578-5cf9-40dc-a565-0f21b37accf7" />
 
+*Включение Telnet на R3*
+
 3.5: Проверка Telnet с AAA
 
 <img width="631" height="195" alt="image" src="https://github.com/user-attachments/assets/6628ea16-c7fc-4443-b3d2-d947538865ef" />
+
+*Проверка Telnet с AAA*
 
 3.6: Проверка резервного локального пользователя
 1. На **Server0** → **Services** → **AAA** → выключаем временно **Service** (**Off**).
@@ -734,79 +856,107 @@ RIPv2 работает ТОЛЬКО на R1 и R3:
 
 <img width="654" height="184" alt="image" src="https://github.com/user-attachments/assets/c4f33c45-fc88-48f5-838a-2d148e9f043c" />
 
+*Проверка резервного локального пользователя*
+
 Шаг 4. Настройка FTP на R2
 4.1: Настройка Server0 как FTP-сервера
 
 <img width="705" height="476" alt="image" src="https://github.com/user-attachments/assets/c177f284-6dd1-44df-8e03-4c523450b9a9" />
 
+*Настройка Server0 как FTP-сервера*
+
 4.2: Настройка FTP-клиента на R2
 
 <img width="672" height="340" alt="image" src="https://github.com/user-attachments/assets/689451ee-560a-48ab-bbfa-5e9a75efcfa0" />
 
+*Настройка FTP-клиента на R2*
+
 Шаг 5. Отправка конфигурации R2 на FTP
 
 <img width="450" height="150" alt="image" src="https://github.com/user-attachments/assets/d68cfd04-b43b-4ce9-9803-ddc58ad6fc48" />
+
+*Отправка конфигурации R2 на FTP*
 
 Шаг 6. Отправка конфигурации R3 на TFTP
 6.1: Настройка Server0 как TFTP-сервера
 
 <img width="693" height="375" alt="image" src="https://github.com/user-attachments/assets/37fb748f-b311-47d1-9c21-a14c2606d9f8" />
 
+*Настройка Server0 как TFTP-сервера*
+
 6.2: Отправка конфигурации с R3
 
 <img width="581" height="178" alt="image" src="https://github.com/user-attachments/assets/e350806b-3f12-4872-9093-f4c4d2a11f19" />
+
+*Отправка конфигурации R3 на TFTP*
 
 Проверка:
 
 <img width="704" height="696" alt="image" src="https://github.com/user-attachments/assets/b5b64ca7-2563-4be4-8509-5414532ffd7b" />
 
+*Проверка файла на TFTP-сервере*
+
 Шаг 7. Проверка отсутствия boot system на R3
 
 <img width="485" height="70" alt="image" src="https://github.com/user-attachments/assets/8afff8e5-2702-4e8d-811b-cb998dbeac9d" />
+
+*Проверка отсутствия boot system на R3*
 
 Шаг 8. Telnet с R2 на R3 по имени "standby"
 8.1: Настройка локального имени на R2
 
 <img width="593" height="220" alt="image" src="https://github.com/user-attachments/assets/ee380bff-ef58-4dbf-baef-89780c0060ed" />
 
+*Настройка локального имени на R2*
+
 8.2: Telnet по имени
 На R2:
 
 <img width="642" height="223" alt="image" src="https://github.com/user-attachments/assets/323d83be-bb21-42c0-92a9-566864faf0ca" />
+
+*Telnet на R3 по имени*
 
 Шаг 9. Изменение локального имени пользователя в R3 через восстановление пароля
 9.1: Процедура восстановления пароля
 
 <img width="607" height="355" alt="image" src="https://github.com/user-attachments/assets/47727f55-10e5-4202-99fd-a43f85527a7f" />
 
+*Процедура восстановления пароля на R3*
+
 Устройство перезагрузится и загрузится без пароля. После загрузки войдём в привилегированный режим.
 Скопируем сохранённую конфигурацию в текущую:
 
 <img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/15440b44-2ad3-4f2b-8687-0dc9063123e4" />
 
+*Копирование конфигурации после восстановления*
+
 Изменим имя локального пользователя:
 
 <img width="528" height="165" alt="image" src="https://github.com/user-attachments/assets/db4a74fb-886c-420e-8943-74dc02c62ade" />
+
+*Изменение имени пользователя*
 
 Вернём регистр конфигурации в нормальное состояние:
 
 <img width="471" height="76" alt="image" src="https://github.com/user-attachments/assets/5bd355bf-5736-4bb9-887f-2676b80238de" />
 
+*Возврат регистра конфигурации*
+
 После перезагрузки, войдём под новым пользователем:
 
 <img width="645" height="276" alt="image" src="https://github.com/user-attachments/assets/fa3d3bfb-a77a-4617-bb67-17e233d6f250" />
 
+*Вход под новым пользователем*
+
 <img width="1548" height="740" alt="image" src="https://github.com/user-attachments/assets/cba8414b-2a61-4519-bde0-ffec83d58ba2" />
+
+*Проверка после перезагрузки*
 
 После процедуры восстановления пароля конфигурация была восстановлена из startup-config, регистр конфигурации возвращён в 0x2102. Связность всех интерфейсов восстановлена.
 
-<img width="576" height="140" alt="image" src="https://github.com/user-attachments/assets/da79fec5-44e4-4ea8-9252-9eb3935762dc" />
-
 <img width="1663" height="745" alt="image" src="https://github.com/user-attachments/assets/68555a00-b3cb-4556-8015-e4ba7a1d3a34" />
 
-
-
-
+*Проверка связности интерфейсов после восстановления*
 
 
 
