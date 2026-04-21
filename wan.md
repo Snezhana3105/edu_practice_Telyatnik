@@ -373,4 +373,282 @@ R1973 находится в отдельной AS - номер 1973. Это бу
 Без команды "no shutdown" EIGRPv6 не будет должным образом работать и
 функционировать.
 
+```
+R1  
+enable  
+conf t  
+hostname R1  
+interface fastEthernet 0/0  
+ip address 10.1.1.1 255.255.255.0  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ip address 10.12.12.1 255.255.255.0  
+no shutdown  
+end  
+conf t  
+router ospf 100  
+network 10.1.1.0 0.0.0.255 area 1  
+network 10.12.12.0 0.0.0.255 area 0  
+passive-interface default  
+no passive-interface fastEthernet 0/1  
+end  
+conf t  
+interface fastEthernet 0/0  
+ip helper-address 10.23.23.100  
+end  
+conf t  
+ipv6 unicast-routing  
+interface fastEthernet 0/0  
+ipv6 address fe80::1 link-local  
+ipv6 address 2001:10:10:10::/64 eui-64  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ipv6 address 2001:11:11:11::1/64  
+no shutdown  
+end  
+conf t  
+ipv6 router ospf 100  
+router-id 0.0.0.1  
+passive-interface default  
+no passive-interface fastEthernet 0/1  
+exit  
+interface fastEthernet 0/0  
+ipv6 ospf 100 area 1  
+exit  
+interface fastEthernet 0/1  
+ipv6 ospf 100 area 0  
+end  
+write memory  
+```
 
+
+```
+R2  
+enable  
+conf t  
+hostname R2  
+interface fastEthernet 0/0  
+ip address 10.23.23.2 255.255.255.0  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ip address 10.12.12.2 255.255.255.0  
+no shutdown  
+end  
+conf t  
+router ospf 100  
+router-id 0.0.0.2  
+network 10.12.12.0 0.0.0.255 area 0  
+network 10.23.23.0 0.0.0.255 area 23  
+exit  
+interface fastEthernet 0/0  
+ip ospf priority 255  
+exit  
+interface fastEthernet 0/1  
+ip ospf priority 255  
+end  
+conf t  
+ipv6 unicast-routing  
+interface fastEthernet 0/0  
+ipv6 address 2001:12:12:12::2/64  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ipv6 address 2001:11:11:11::2/64  
+no shutdown  
+end  
+conf t  
+ipv6 router ospf 100  
+router-id 0.0.0.2  
+exit  
+interface fastEthernet 0/0  
+ipv6 ospf 100 area 23  
+exit  
+interface fastEthernet 0/1  
+ipv6 ospf 100 area 0  
+end  
+write memory  
+```
+
+```
+R2  
+enable  
+conf t  
+hostname R2  
+interface fastEthernet 0/0  
+ip address 10.23.23.2 255.255.255.0  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ip address 10.12.12.2 255.255.255.0  
+no shutdown  
+end  
+conf t  
+router ospf 100  
+router-id 0.0.0.2  
+network 10.12.12.0 0.0.0.255 area 0  
+network 10.23.23.0 0.0.0.255 area 23  
+exit  
+interface fastEthernet 0/0  
+ip ospf priority 255  
+exit  
+interface fastEthernet 0/1  
+ip ospf priority 255  
+end  
+conf t  
+ipv6 unicast-routing  
+interface fastEthernet 0/0  
+ipv6 address 2001:12:12:12::2/64  
+no shutdown  
+exit  
+interface fastEthernet 0/1  
+ipv6 address 2001:11:11:11::2/64  
+no shutdown  
+end  
+conf t  
+ipv6 router ospf 100  
+router-id 0.0.0.2  
+exit  
+interface fastEthernet 0/0  
+ipv6 ospf 100 area 23  
+exit  
+interface fastEthernet 0/1  
+ipv6 ospf 100 area 0  
+end  
+write memory 
+```
+
+
+```
+R3  
+enable  
+conf t  
+hostname R3  
+interface loopback 3  
+ip address 3.3.3.3 255.0.0.0  
+exit  
+interface loopback 33  
+ip address 33.33.33.33 255.0.0.0  
+exit  
+interface gigabitEthernet 0/0  
+ip address 10.23.23.3 255.255.255.0  
+no shutdown  
+exit  
+interface serial 0/3/0  
+ip address 30.30.30.3 255.255.255.0  
+no shutdown  
+end  
+conf t  
+username R1973 password CiscoCHAP  
+interface serial 0/3/0  
+encapsulation ppp  
+ppp authentication chap  
+clock rate 64000  
+end  
+conf t  
+router ospf 100  
+network 10.23.23.0 0.0.0.255 area 23  
+network 3.3.3.0 0.0.0.255 area 23  
+network 33.33.33.0 0.0.0.255 area 23  
+default-information originate  
+end  
+conf t  
+router bgp 3  
+neighbor 30.30.30.73 remote-as 1973  
+end  
+conf t  
+license boot module c2900 technology-package uck9  
+yes  
+license boot module c2900 technology-package securityk9  
+yes  
+end  
+copy running-config startup-config  
+reload  
+conf t  
+ipv6 unicast-routing  
+interface gigabitEthernet 0/0  
+ipv6 address 2001:12:12:12::3/64  
+no shutdown  
+exit  
+interface serial 0/3/0  
+ipv6 address 2001:30:30:30::3/64  
+no shutdown  
+end  
+conf t  
+ipv6 route ::/0 2001:30:30:30::1973  
+end  
+conf t  
+ipv6 router ospf 100  
+router-id 0.0.0.3  
+default-information originate  
+exit  
+interface gigabitEthernet 0/0  
+ipv6 ospf 100 area 23  
+end  
+conf t  
+ipv6 router eigrp 100  
+no shutdown  
+exit  
+interface serial 0/3/0  
+ipv6 eigrp 100  
+no shutdown  
+end  
+write memory  
+```
+
+
+
+```
+R1973  
+enable  
+conf t  
+hostname R1973  
+interface loopback 1973  
+ip address 73.73.73.73 255.255.255.0  
+exit  
+interface serial 0/3/0  
+ip address 30.30.30.73 255.255.255.0  
+no shutdown  
+end  
+conf t  
+username R3 password CiscoCHAP  
+interface serial 0/3/0  
+encapsulation ppp  
+ppp authentication chap  
+end  
+conf t  
+router bgp 1973  
+neighbor 30.30.30.3 remote-as 3  
+network 73.73.73.0 mask 255.255.255.0  
+exit  
+ip route 0.0.0.0 0.0.0.0 30.30.30.3  
+end  
+conf t  
+ipv6 unicast-routing  
+interface loopback 1973  
+ipv6 address 2001:1973:1973:1973::1973/64  
+no shutdown  
+exit  
+interface serial 0/3/0  
+ipv6 address 2001:30:30:30::1973/64  
+no shutdown  
+end  
+conf t  
+ipv6 router eigrp 100  
+no shutdown  
+exit  
+interface serial 0/3/0  
+ipv6 eigrp 100  
+no shutdown  
+exit  
+interface loopback 1973  
+ipv6 eigrp 100  
+no shutdown  
+end  
+conf t  
+ipv6 route ::/0 2001:30:30:30::3  
+end  
+write memory  
+```
