@@ -4,6 +4,7 @@
 <img width="1625" height="652" alt="image" src="https://github.com/user-attachments/assets/72c8737b-75b8-4ed7-81a6-335eb99113e9" />
 
 *Схема топологии сети*
+
 Шаг 2: В каждом роутере создаём Сообщение дня(MOTD) с  фио, номером группы и порядковым номером в журнале в формате:
 "Работу выполнила(а) %фио% студент(ка) группы %группа%, в журнале под номером %число%"
 
@@ -96,30 +97,52 @@
 
 <img width="668" height="522" alt="image" src="https://github.com/user-attachments/assets/95109844-2706-4c25-9592-dd81a5433ce8" />
 
+*Доменное имя для устройств Новосибирска (роутер R1)*
+
 <img width="612" height="524" alt="image" src="https://github.com/user-attachments/assets/30fc33a1-b27e-4ac1-b310-77e3164d619f" />
 
+*Доменное имя для устройств Новосибирска (коммутатор Sw0)*
+
 <img width="625" height="526" alt="image" src="https://github.com/user-attachments/assets/15ed85a8-806c-448e-aa49-d3d29a68b204" />
+
+*Доменное имя для устройств Новосибирска (коммутатор Sw1)*
 
 Для всех устройств в Москве:
 
 <img width="568" height="529" alt="image" src="https://github.com/user-attachments/assets/dc1076d2-4138-4f01-bdfd-19626a51d093" />
 
+*Доменное имя для устройств Москвы (роутер R2)*
+
 <img width="678" height="528" alt="image" src="https://github.com/user-attachments/assets/19c579cd-9181-436a-b0d4-24caab367284" />
+
+*Доменное имя для устройств Москвы (роутер R3)*
 
 <img width="580" height="528" alt="image" src="https://github.com/user-attachments/assets/8240cb29-6da8-45c4-bdbf-21f527d9e7ca" />
 
+*Доменное имя для устройств Москвы (MLS)*
+
 <img width="598" height="531" alt="image" src="https://github.com/user-attachments/assets/effde5ef-acf4-4e70-8f9e-7bad89d47ee6" />
+
+*Доменное имя для устройств Москвы (коммутатор Sw2)*
 
 Шаг 5. Создание VLAN на SW0 и SW1
 
 <img width="562" height="529" alt="image" src="https://github.com/user-attachments/assets/909cc095-63ca-4bd6-a364-ea312245d32b" />
 
+*Создание VLAN на SW0*
+
 <img width="580" height="523" alt="image" src="https://github.com/user-attachments/assets/2b56dd63-46c4-433e-a80e-91f805e06cda" />
+
+*Создание VLAN на SW1*
 
 Шаг 6. Назначение портов VLAN на SW0 и SW1
 <img width="636" height="605" alt="image" src="https://github.com/user-attachments/assets/102a8021-8085-4cb4-8bd1-9cedda33fbc3" />
 
+*Назначение портов VLAN на SW0*
+
 <img width="484" height="542" alt="image" src="https://github.com/user-attachments/assets/bd219a11-6140-4cee-8049-97f174ce2805" />
+
+*Назначение портов VLAN на SW1*
 
 Шаг 7: Создаём канал EtherChannel 2-го уровня между коммутаторами в Новосибирске, используя интерфейсы G0/1 и GO/2, со следующими требованиями:
 -Используем стандартный протокол для создания логической связи под номером 1
@@ -129,91 +152,144 @@
 
 <img width="802" height="615" alt="image" src="https://github.com/user-attachments/assets/a1b39b94-bdb0-4419-add0-6ae6ad239dd2" />
 
+*Настройка EtherChannel на SW0*
+
 **Настройка на rus-nsk-sw1:**
 
 <img width="839" height="768" alt="image" src="https://github.com/user-attachments/assets/daf62467-dc02-4115-a151-b6b0bdfbe164" />
+
+*Настройка EtherChannel на SW1*
 
 Шаг 8. Management Interface на SW0
 
 <img width="644" height="593" alt="image" src="https://github.com/user-attachments/assets/d9222a57-a4fd-488c-b5d1-eeccbcbc4889" />
 
+*Настройка management interface на SW0*
+
 Шаг 9. Management Interface на SW1
 
 <img width="680" height="658" alt="image" src="https://github.com/user-attachments/assets/993e6f77-1e4c-4671-ba58-f338d43912b2" />
+
+*Настройка management interface на SW1*
 
 Шаг 10. Включение SSHv2 на SW0 и SW1
 Создаем пользователя и включаем SSH:
 
 <img width="638" height="660" alt="image" src="https://github.com/user-attachments/assets/923f0574-16a0-442c-92c6-935a20545705" />
 
+*Включение SSH и создание пользователя на SW0*
+
 <img width="631" height="643" alt="image" src="https://github.com/user-attachments/assets/b1c6c0a9-c7dd-45f4-b8a1-9b7abf2700ac" />
+
+*Включение SSH и создание пользователя на SW1*
 
 Настраиваем виртуальные линии (vty) для удаленного доступа:
 
 <img width="635" height="645" alt="image" src="https://github.com/user-attachments/assets/79c6754e-f268-4dcb-88a6-bc7ea1d5681c" />
 
+*Настройка VTY для удалённого доступа на SW0*
+
 <img width="591" height="648" alt="image" src="https://github.com/user-attachments/assets/93b2b946-a895-48b4-8154-af2f5947d829" />
+
+*Настройка VTY для удалённого доступа на SW1*
 
 Шаг 11. Настройка транка на SW0 до R1
 
 <img width="422" height="64" alt="image" src="https://github.com/user-attachments/assets/05f8ec1b-78ae-4496-8872-07f58bde03f5" />
 
+*Настройка транка между SW0 и R1*
+
 Шаг 12. Настройка MOTD на SW0 и SW1
 
 <img width="419" height="86" alt="image" src="https://github.com/user-attachments/assets/4f9e6c4f-208a-4d64-b2f5-246c7e8e06c7" />
 
+*MOTD на SW0*
+
 <img width="408" height="81" alt="image" src="https://github.com/user-attachments/assets/29ad718a-ccc2-41c1-bd20-688c7bbfcf1b" />
+
+*MOTD на SW1*
 
 Шаг 13. Настройка безопасности портов f0/2, f0/3, f0/4 на SW0 и SW1
 SW0
 
 <img width="634" height="277" alt="image" src="https://github.com/user-attachments/assets/6f2f8241-76ab-4a97-8cd5-b8c08bb39213" />
 
+*Port security на SW0 (первые порты)*
+
 <img width="627" height="264" alt="image" src="https://github.com/user-attachments/assets/ea88df5c-3405-4548-adec-360f5c078db2" />
 
+*Port security на SW0 (продолжение)*
+
 <img width="628" height="372" alt="image" src="https://github.com/user-attachments/assets/ecf6eb0a-04c1-42e7-b6da-9e98b6437ea1" />
+
+*Port security на SW0 (проверка)*
 
 SW1
 
 <img width="638" height="270" alt="image" src="https://github.com/user-attachments/assets/ab832fee-77c1-4ea2-9806-743ee9b2f13a" />
 
+*Port security на SW1 (первые порты)*
+
 <img width="623" height="277" alt="image" src="https://github.com/user-attachments/assets/9a8b2442-38d0-431e-b3d1-0f4c1b2f9d5c" />
 
+*Port security на SW1 (продолжение)*
+
 <img width="638" height="372" alt="image" src="https://github.com/user-attachments/assets/75abf441-f75a-4b38-b8ff-5d9fae75bc12" />
+
+*Port security на SW1 (проверка)*
 
 Проверка после настройки
 SW0
 
 <img width="536" height="690" alt="image" src="https://github.com/user-attachments/assets/27f4eec8-7e30-41a5-8fc8-ce8809449345" />
 
+*Проверка port security на SW0*
+
 SW1
 
 <img width="562" height="696" alt="image" src="https://github.com/user-attachments/assets/639d8c38-8882-4280-a3c3-f8531d09bc4f" />
+
+*Проверка port security на SW1*
 
 Шаг 14. Защита консольного подключения
 
 <img width="325" height="87" alt="image" src="https://github.com/user-attachments/assets/f6e3a7ca-d33d-4e4e-9699-ef02b95ab71d" />
 
+*Защита консоли паролем на SW0*
+
 <img width="339" height="68" alt="image" src="https://github.com/user-attachments/assets/b39bef9b-926b-4793-9e04-612e54c5733c" />
 
+*Защита консоли паролем на SW1*
 
 Шаг 15. Отключение таймаута для консоли и SSH
 
 <img width="382" height="115" alt="image" src="https://github.com/user-attachments/assets/1802fd9e-ee82-4bcd-9de3-98a2ef9ad2a1" />
 
+*Отключение таймаута на консоли и SSH (SW0)*
+
 <img width="391" height="166" alt="image" src="https://github.com/user-attachments/assets/ed41ba9b-3484-403b-882b-89faf80e93b1" />
+
+*Отключение таймаута на консоли и SSH (SW1)*
 
 Шаг 16. Предотвращение прерывания консоли логами
 
 <img width="402" height="65" alt="image" src="https://github.com/user-attachments/assets/25d66cfa-125b-4845-988d-4ce28c4b0e21" />
 
+*Запрет прерывания консоли логами на SW0*
+
 <img width="393" height="83" alt="image" src="https://github.com/user-attachments/assets/baa9cc73-f3ad-4f40-964b-fc1a00c46c3b" />
+
+*Запрет прерывания консоли логами на SW1*
 
 Шаг 17. Изменение буфера истории команд
 
 <img width="400" height="121" alt="image" src="https://github.com/user-attachments/assets/245e62dc-0ee5-4b36-92d9-1ac3fd61d689" />
 
+*Изменение буфера истории команд на SW0*
+
 <img width="375" height="128" alt="image" src="https://github.com/user-attachments/assets/cbd2bd68-834d-49ba-a9e3-395b81d94a3a" />
+
+*Изменение буфера истории команд на SW1*
 
 Сохраняем конфигурацию на SW0 и SW1 командой 
 copy running-config startup-config
