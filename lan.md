@@ -3,52 +3,92 @@
 
 <img width="1625" height="652" alt="image" src="https://github.com/user-attachments/assets/72c8737b-75b8-4ed7-81a6-335eb99113e9" />
 
-****
+*Схема топологии сети*
 Шаг 2: В каждом роутере создаём Сообщение дня(MOTD) с  фио, номером группы и порядковым номером в журнале в формате:
 "Работу выполнила(а) %фио% студент(ка) группы %группа%, в журнале под номером %число%"
 
 <img width="730" height="439" alt="image" src="https://github.com/user-attachments/assets/f9bea977-0e35-4497-afcc-190add4f0fc2" />
 
+*Настройка MOTD на первом роутере*
+
 <img width="863" height="816" alt="image" src="https://github.com/user-attachments/assets/37bccd34-421e-47d5-a960-1f75482c4543" />
+
+*Настройка MOTD на втором роутере*
 
 <img width="862" height="849" alt="image" src="https://github.com/user-attachments/assets/51975099-9355-4bbb-9de9-f708d05e8df1" />
 
+*Настройка MOTD на третьем роутере*
+
 <img width="844" height="849" alt="image" src="https://github.com/user-attachments/assets/791db0b8-cdfd-48d3-b313-526b46f1aa2c" />
+
+*Настройка MOTD на MLS*
 
 Шаг 3: Переименовываем все устройства по шаблону сокращенное название страны-сокращенное название города-роль устройства сокращенно+порядковый номер. 
 Например: rus-msk-pc1.
 
 <img width="560" height="469" alt="image" src="https://github.com/user-attachments/assets/0c108cd0-5dae-435c-bf36-56ea5dd3fe8c" />
 
+*Переименование роутера R1*
+
 <img width="651" height="520" alt="image" src="https://github.com/user-attachments/assets/14575cd3-a3df-491b-a8b5-05c6c76c3ece" />
+
+*Переименование роутера R2*
 
 <img width="729" height="539" alt="image" src="https://github.com/user-attachments/assets/7ee9891a-cc80-4100-ac4c-377c97b090d8" />
 
+*Переименование роутера R3*
+
 <img width="617" height="529" alt="image" src="https://github.com/user-attachments/assets/aee710f7-60cd-4d9a-93c1-047c2fd4239a" />
+
+*Переименование роутера MLS*
 
 <img width="533" height="521" alt="image" src="https://github.com/user-attachments/assets/86f8f4f7-595f-47e2-91f2-20928036c913" />
 
+*Переименование роутера Switch0*
+
 <img width="636" height="487" alt="image" src="https://github.com/user-attachments/assets/17012921-ad0a-4b67-849e-390c8fe4fc6f" />
+
+*Переименование коммутатора Switch1*
 
 <img width="559" height="497" alt="image" src="https://github.com/user-attachments/assets/0d89c7f0-a05e-4d0d-90af-c63b2ea54048" />
 
+*Переименование коммутатора Switch2*
+
 <img width="574" height="217" alt="image" src="https://github.com/user-attachments/assets/dd84a880-ef45-47e7-86fb-2227cfabe9e7" />
+
+*Переименование сервера Server0*
 
 <img width="525" height="270" alt="image" src="https://github.com/user-attachments/assets/6080cc94-0968-47fd-96e8-1adeaef7a5e7" />
 
+*Переименование PC0*
+
 <img width="510" height="261" alt="image" src="https://github.com/user-attachments/assets/56e9f9d6-3985-4367-8acd-6d5beee4eb42" />
+
+*Переименование PC1*
 
 <img width="581" height="329" alt="image" src="https://github.com/user-attachments/assets/ab23348b-9f9c-41d2-88b5-0a9cd6a233d0" />
 
+*Переименование PC2*
+
 <img width="526" height="279" alt="image" src="https://github.com/user-attachments/assets/c53cdae6-b4a4-4fbd-83cd-1d3157519def" />
+
+*Переименование PC3*
 
 <img width="508" height="312" alt="image" src="https://github.com/user-attachments/assets/65eb258a-c108-4610-95d4-2a7b61063de4" />
 
+*Переименование PC4*
+
 <img width="506" height="254" alt="image" src="https://github.com/user-attachments/assets/052d8c06-a373-4656-833b-c975020b921c" />
+
+*Переименование PC5*
 
 <img width="542" height="321" alt="image" src="https://github.com/user-attachments/assets/5d245c90-9fe6-4476-9c1c-8b0c496be0ff" />
 
+*Переименование PC6*
+
 <img width="486" height="331" alt="image" src="https://github.com/user-attachments/assets/2d2207e3-cd37-4598-aa67-c725b6999299" />
+
+*Переименование PC7*
 
 Шаг 4: Раздаём доменные имена согласно местоположению.
 Настраиваем на всех роутерах и коммутаторах.
