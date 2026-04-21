@@ -299,44 +299,70 @@ copy running-config startup-config
  
 <img width="616" height="187" alt="image" src="https://github.com/user-attachments/assets/2cbbdc94-03e8-487f-ab70-6f45c258510c" />
 
+*Настройка интерфейса f0/1 на R1*
+
 Шаг 2. Настройка маршрутизации между VLAN
-1. Включим физический интерфейс, который смотрит в сторону SW0:
+2.1 Включим физический интерфейс, который смотрит в сторону SW0:
    
 <img width="619" height="170" alt="image" src="https://github.com/user-attachments/assets/82161da9-48b3-453b-89a8-3c25bfa63e96" />
 
-2. Создадим сабинтерфейсы для каждого VLAN. Тег должен совпадать с номером VLAN.
+*Включение физического интерфейса на R1*
+
+2.2 Создадим сабинтерфейсы для каждого VLAN. Тег должен совпадать с номером VLAN.
 
 <img width="717" height="590" alt="image" src="https://github.com/user-attachments/assets/0987b273-09d3-4396-a8d3-54c9f85384af" />
 
+*Создание сабинтерфейсов для VLAN на R1*
+
 Шаг 3. Настройка DHCP-сервера на R1
-Для каждого VLAN создаем пул адресов
+3.1 Для каждого VLAN создаем пул адресов
 
 <img width="447" height="326" alt="image" src="https://github.com/user-attachments/assets/ef52ded2-fcd9-46ab-ba57-5f861e17cbe7" />
 
-Исключаем адреса, которые не должны выдаваться
+*Настройка DHCP-пулов на R1*
+
+3.2 Исключаем адреса, которые не должны выдаваться
 
 <img width="546" height="141" alt="image" src="https://github.com/user-attachments/assets/1a388f94-5c90-4d72-b2f5-d0ef7d92b36f" />
 
-Проверка, что у PC0/1/2/3/4/5 выданы правильные айпи-адреса
+*Исключение адресов из DHCP-пулов*
+
+3.3 Проверка, что у PC0/1/2/3/4/5 выданы правильные айпи-адреса
 
 <img width="378" height="327" alt="image" src="https://github.com/user-attachments/assets/17568df9-fe0a-4185-beea-25b6b2046fa0" />
 
+*Проверка IP на PC0*
+
 <img width="410" height="296" alt="image" src="https://github.com/user-attachments/assets/27f91615-4799-4220-8db2-27436ddf5b50" />
+
+*Проверка IP на PC1*
 
 <img width="370" height="315" alt="image" src="https://github.com/user-attachments/assets/96c0eb9d-ebb3-49c3-875e-d5ca287aaf7e" />
 
+*Проверка IP на PC2*
+
 <img width="376" height="322" alt="image" src="https://github.com/user-attachments/assets/a519f3a1-a782-4b4e-a044-712aa3fdd65f" />
+
+*Проверка IP на PC3*
 
 <img width="353" height="343" alt="image" src="https://github.com/user-attachments/assets/401e194a-1683-46cc-895b-ec59baf84650" />
 
+*Проверка IP на PC4*
+
 <img width="341" height="345" alt="image" src="https://github.com/user-attachments/assets/9f0d3e7c-252b-4ff3-a539-5f8c5895da66" />
+
+*Проверка IP на PC5*
 
 Шаг 4. Проверка пинга
 У меня 3.0.0.100, адрес 3.0.0.101 тоже доступен, так как DHCP работает корректно.
 
 <img width="482" height="221" alt="image" src="https://github.com/user-attachments/assets/8c7b06d0-bb50-4ca8-854d-384fb6236739" />
 
+*Пинг между ПК*
+
 <img width="509" height="222" alt="image" src="https://github.com/user-attachments/assets/653a5549-cb5e-4ff7-bdfe-f417bdff96aa" />
+
+*Пинг между ПК*
 
 # Часть 3
 
@@ -344,92 +370,140 @@ copy running-config startup-config
 
 <img width="561" height="85" alt="image" src="https://github.com/user-attachments/assets/c3100aa9-c429-4854-91a8-b608fc88ebf7" />
 
+*Настройка имени хоста на MLS*
+
 Шаг 2. Включение маршрутизации
 
 <img width="273" height="17" alt="image" src="https://github.com/user-attachments/assets/b4f5268e-660f-4b21-a9ba-300dbfada967" />
+
+*Включение IP-маршрутизации*
 
 Шаг 3. Создание VLAN 100 и 200 с именами
 
 <img width="344" height="136" alt="image" src="https://github.com/user-attachments/assets/b8845275-10ff-4a94-9b4a-cdf6463b38fe" />
 
+*Создание VLAN 100 и 200*
+
 Проверка:
 
 <img width="643" height="353" alt="image" src="https://github.com/user-attachments/assets/123b737f-8be9-4d27-9969-edf8b408bc3e" />
+
+*Проверка созданных VLAN*
 
 Шаг 4. Назначение портов доступа в VLAN
 
 <img width="456" height="198" alt="image" src="https://github.com/user-attachments/assets/cc125127-291b-49b3-9805-629dd16ca43f" />
 
+*Назначение портов доступа в VLAN*
+
 Проверка:
 
 <img width="635" height="339" alt="image" src="https://github.com/user-attachments/assets/33039d41-b53e-445b-9c05-7ce94cb937f7" />
+
+*Проверка назначения портов*
 
 Шаг 5. Создание SVI для VLAN 100 и 200
 
 <img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/baeaff76-d925-4578-9929-549e5d6a0fef" />
 
+*Создание SVI для VLAN 100 и 200*
+
 Проверка:
 
 <img width="668" height="498" alt="image" src="https://github.com/user-attachments/assets/f5a2141f-6086-4c65-b3f8-4e8499dfeaf9" />
+
+*Проверка SVI*
 
 Шаг 6. Настройка интерфейсов 3-го уровня
 
 <img width="766" height="363" alt="image" src="https://github.com/user-attachments/assets/96e4670a-daec-4559-bb93-4afc4d0a4621" />
 
+*Настройка интерфейсов 3-го уровня на MLS*
+
 Проверка:
 
 <img width="694" height="404" alt="image" src="https://github.com/user-attachments/assets/9e148e8f-c737-4406-9da9-3046827eeb85" />
+
+*Проверка интерфейсов 3-го уровня*
 
 Шаг 7. Настройка PC6 и проверка пинга
 
 <img width="444" height="325" alt="image" src="https://github.com/user-attachments/assets/9b7ee629-d121-45ca-9bc3-8b38bb963674" />
 
+*Настройка PC6*
+
  Ответ от шлюза:
 
- <img width="488" height="281" alt="image" src="https://github.com/user-attachments/assets/67718232-bf1b-4ab5-b164-1956b902b13b" />
+<img width="488" height="281" alt="image" src="https://github.com/user-attachments/assets/67718232-bf1b-4ab5-b164-1956b902b13b" />
+
+*Пинг с PC6 до шлюза*
 
 Также заодно настроили PC7
 
 <img width="455" height="336" alt="image" src="https://github.com/user-attachments/assets/3cce70ed-6ba1-48cf-aa27-6c3cc4a14e53" />
 
+*Настройка PC7*
+
 Проверка:
 
 <img width="477" height="248" alt="image" src="https://github.com/user-attachments/assets/95bc405e-ae0e-495b-9780-ac8f6ac3146e" />
+
+*Пинг с PC7 до шлюза*
 
 # Часть 4
 Шаг 1. Настройка IP-адресов на R2
 
 <img width="798" height="454" alt="image" src="https://github.com/user-attachments/assets/6c672f67-5bd2-41de-8118-035ee50fa175" />
 
+*Настройка IP на интерфейсах R2*
+
 Проверка:
 
 <img width="714" height="90" alt="image" src="https://github.com/user-attachments/assets/b1ddd92c-53b8-4048-a074-bbf50d203779" />
+
+*Проверка IP на R2*
 
 Шаг 2. Настройка IP-адресов на R3
 
 <img width="707" height="457" alt="image" src="https://github.com/user-attachments/assets/89c60da2-8808-4cd0-a534-ed114d9c9ff1" />
 
+*Настройка IP на интерфейсах R3*
+
 Проверка:
 
 <img width="683" height="112" alt="Pasted_image_20260415164633" src="https://github.com/user-attachments/assets/e1cd145a-7d8c-44da-a7fa-d356203c22cd" />
+
+*Проверка IP на R3*
 
 Шаг 3: Настройка HSRP на R2 и R3:
 
 <img width="546" height="244" alt="Pasted_image_20260415165036" src="https://github.com/user-attachments/assets/33ede68d-36c1-431f-8e8f-7facd3ec71a0" />
 
+*Настройка HSRP на R2*
+
 <img width="545" height="195" alt="Pasted_image_20260415165054" src="https://github.com/user-attachments/assets/7d3b54ed-771f-49e7-a307-f65d742ef276" />
+
+*Настройка HSRP на R3*
 
 Проверка HSRP:
 
 <img width="548" height="241" alt="Pasted_image_20260415165133" src="https://github.com/user-attachments/assets/abb8b4f7-dc79-41c5-8b90-7d1157c50e93" />
 
+*Проверка HSRP на R2*
+
 <img width="582" height="252" alt="Pasted_image_20260415165310" src="https://github.com/user-attachments/assets/3ef75e08-f9e7-442d-84f7-fbdee66fa8fa" />
+
+*Проверка HSRP на R3*
 
 Проверка связности между R2 и R3:
 
 <img width="579" height="135" alt="Pasted_image_20260415165446" src="https://github.com/user-attachments/assets/176245ca-d675-425e-adf4-c7a86e2cf835" />
 
+*Пинг между R2 и R3*
+
 <img width="592" height="134" alt="Pasted_image_20260415165530" src="https://github.com/user-attachments/assets/04776fd0-6cc7-4d35-8b32-8003f2623510" />
+
+*Пинг между R2 и R3*
 
 Проверка связности с MLS:
 
@@ -729,3 +803,449 @@ RIPv2 работает ТОЛЬКО на R1 и R3:
 <img width="576" height="140" alt="image" src="https://github.com/user-attachments/assets/da79fec5-44e4-4ea8-9252-9eb3935762dc" />
 
 <img width="1663" height="745" alt="image" src="https://github.com/user-attachments/assets/68555a00-b3cb-4556-8015-e4ba7a1d3a34" />
+
+
+
+
+
+
+
+
+```
+SW0
+enable
+configure terminal
+hostname rus-nsk-sw0
+banner motd
+Raboty vipolnila Telyatnik Snezhana Andreevna studentka gryppi 9CA-321, v jornale pod nomerom 24! #
+vlan 2
+exit
+vlan 3
+exit
+vlan 4
+exit
+interface f0/2
+switchport mode access
+switchport access vlan 2
+exit
+interface f0/3
+switchport mode access
+switchport access vlan 3
+exit
+interface f0/4
+switchport mode access
+switchport access vlan 4
+exit
+interface range g0/1-2
+channel-group 1 mode active
+channel-protocol lacp
+exit
+interface port-channel 1
+switchport mode trunk
+exit
+interface vlan 1
+ip address 1.0.0.50 255.0.0.0
+no shutdown
+exit
+ip default-gateway 1.0.0.1
+ip domain-name novosibirsk.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+username nsk secret cisco
+line vty 0 15
+transport input ssh
+login local
+exit
+interface f0/24
+switchport mode trunk
+exit
+banner motd ^CЭто rus-nsk-sw0^C
+interface range f0/2-4
+spanning-tree portfast
+spanning-tree bpduguard enable
+no cdp enable
+switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+exit
+line console 0
+login local
+exec-timeout 0 0
+logging synchronous
+history size 256
+exit
+line vty 0 15
+exec-timeout 0 0
+exit
+end
+write memory
+```
+
+```
+SW1
+enable
+configure terminal
+hostname rus-nsk-sw0
+banner motd
+Raboty vipolnila Telyatnik Snezhana Andreevna studentka gryppi 9CA-321, v jornale pod nomerom 24! #
+vlan 2
+exit
+vlan 3
+exit
+vlan 4
+exit
+interface f0/2
+switchport mode access
+switchport access vlan 2
+exit
+interface f0/3
+switchport mode access
+switchport access vlan 3
+exit
+interface f0/4
+switchport mode access
+switchport access vlan 4
+exit
+interface range g0/1-2
+channel-group 1 mode passive
+channel-protocol lacp
+exit
+interface port-channel 1
+switchport mode trunk
+exit
+interface vlan 2
+ip address 2.0.0.50 255.0.0.0
+no shutdown
+exit
+ip default-gateway 2.0.0.1
+ip domain-name novosibirsk.local
+crypto key generate rsa modulus 2048
+ip ssh version 2
+username nsk secret cisco
+line vty 0 15
+transport input ssh
+login local
+exit
+banner motd ^CЭто rus-nsk-sw1^C
+interface range f0/2-4
+spanning-tree portfast
+spanning-tree bpduguard enable
+no cdp enable
+switchport port-security
+switchport port-security maximum 1
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+exit
+line console 0
+login local
+exec-timeout 0 0
+logging synchronous
+history size 256
+exit
+line vty 0 15
+exec-timeout 0 0
+exit
+end
+write memory
+```
+
+```
+R1
+enable
+configure terminal
+hostname rus-nsk-sw0
+banner motd
+Raboty vipolnila Telyatnik Snezhana Andreevna studentka gryppi 9CA-321, v jornale pod nomerom 24! #
+interface f0/1
+ip address 40.40.40.1 255.255.255.0
+no shutdown
+exit
+interface f0/1.1
+encapsulation dot1Q 1
+ip address 1.0.0.1 255.0.0.0
+exit
+interface f0/1.2
+encapsulation dot1Q 2
+ip address 2.0.0.1 255.0.0.0
+exit
+interface f0/1.3
+encapsulation dot1Q 3
+ip address 3.0.0.1 255.0.0.0
+exit
+interface f0/1.4
+encapsulation dot1Q 4
+ip address 4.0.0.1 255.0.0.0
+exit
+ip dhcp excluded-address 1.0.0.1 1.0.0.99
+ip dhcp excluded-address 1.0.0.201 1.0.0.255
+ip dhcp pool VLAN1_POOL
+network 1.0.0.0 255.0.0.0
+default-router 1.0.0.1
+exit
+ip dhcp excluded-address 2.0.0.1 2.0.0.99
+ip dhcp excluded-address 2.0.0.201 2.0.0.255
+ip dhcp pool VLAN2_POOL
+network 2.0.0.0 255.0.0.0
+default-router 2.0.0.1
+exit
+ip dhcp excluded-address 3.0.0.1 3.0.0.99
+ip dhcp excluded-address 3.0.0.201 3.0.0.255
+ip dhcp pool VLAN3_POOL
+network 3.0.0.0 255.0.0.0
+default-router 3.0.0.1
+exit
+ip dhcp excluded-address 4.0.0.1 4.0.0.99
+ip dhcp excluded-address 4.0.0.201 4.0.0.255
+ip dhcp pool VLAN4_POOL
+network 4.0.0.0 255.0.0.0
+default-router 4.0.0.1
+exit
+router eigrp 100
+network 1.0.0.0
+network 2.0.0.0
+network 3.0.0.0
+network 4.0.0.0
+network 40.40.40.0
+no auto-summary
+exit
+interface loopback 1
+ip address 192.168.101.1 255.255.255.0
+exit
+router rip
+version 2
+network 192.168.101.0
+no auto-summary
+exit
+ntp authenticate
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.0.100 key 1
+logging host 10.0.0.100
+end
+write memory
+```
+
+```
+MLS
+enable
+configure terminal
+hostname rus-msk-mls
+ip routing
+vlan 100
+name Sales_dept
+exit
+vlan 200
+name IT_dept
+exit
+interface f0/4
+switchport mode access
+switchport access vlan 100
+exit
+interface f0/5
+switchport mode access
+switchport access vlan 200
+exit
+interface vlan 100
+ip address 100.0.0.50 255.0.0.0
+no shutdown
+exit
+interface vlan 200
+ip address 200.0.0.50 255.255.255.0
+no shutdown
+exit
+interface f0/1
+no switchport
+ip address 11.0.0.50 255.0.0.0
+no shutdown
+exit
+interface f0/2
+no switchport
+ip address 12.0.0.50 255.0.0.0
+no shutdown
+exit
+interface f0/3
+no switchport
+ip address 40.40.40.50 255.255.255.0
+no shutdown
+exit
+router eigrp 100
+network 100.0.0.0
+network 200.0.0.0
+network 11.0.0.0
+network 12.0.0.0
+network 40.40.40.0
+no auto-summary
+exit
+ntp authenticate
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.0.100 key 1
+logging host 10.0.0.100
+end
+write memory
+```
+
+```
+R2
+enable
+configure terminal
+hostname rus-msk-mls
+ip routing
+vlan 100
+name Sales_dept
+exit
+vlan 200
+name IT_dept
+exit
+interface f0/4
+switchport mode access
+switchport access vlan 100
+exit
+interface f0/5
+switchport mode access
+switchport access vlan 200
+exit
+interface vlan 100
+ip address 100.0.0.50 255.0.0.0
+no shutdown
+exit
+interface vlan 200
+ip address 200.0.0.50 255.255.255.0
+no shutdown
+exit
+interface f0/1
+no switchport
+ip address 11.0.0.50 255.0.0.0
+no shutdown
+exit
+interface f0/2
+no switchport
+ip address 12.0.0.50 255.0.0.0
+no shutdown
+exit
+interface f0/3
+no switchport
+ip address 40.40.40.50 255.255.255.0
+no shutdown
+exit
+router eigrp 100
+network 100.0.0.0
+network 200.0.0.0
+network 11.0.0.0
+network 12.0.0.0
+network 40.40.40.0
+no auto-summary
+exit
+ntp authenticate
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.0.100 key 1
+logging host 10.0.0.100
+end
+write memory
+```
+
+```
+R2
+enable
+configure terminal
+hostname rus-msk-r2
+interface f0/0
+ip address 10.0.0.2 255.0.0.0
+no shutdown
+exit
+interface f0/1
+ip address 11.0.0.2 255.0.0.0
+no shutdown
+exit
+interface f0/0
+standby 1 ip 10.0.0.1
+standby 1 priority 110
+standby 1 preempt
+standby 1 track f0/1
+exit
+router eigrp 100
+network 10.0.0.0
+network 11.0.0.0
+no auto-summary
+exit
+access-list 101 deny icmp any any echo
+access-list 101 permit ip any any
+interface f0/0
+ip access-group 101 in
+exit
+interface f0/1
+ip access-group 101 in
+exit
+snmp-server community cisco RW
+ip ftp username cisco
+ip ftp password cisco
+ntp authenticate
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.0.100 key 1
+logging host 10.0.0.100
+end
+copy running-config ftp://cisco:cisco@10.0.0.100/r2-config.cfg
+write memory
+```
+
+```
+R3
+enable
+configure terminal
+hostname rus-msk-r3
+interface f0/0
+ip address 10.0.0.3 255.0.0.0
+no shutdown
+exit
+interface f0/1
+ip address 12.0.0.3 255.0.0.0
+no shutdown
+exit
+interface f0/0
+standby 1 ip 10.0.0.1
+standby 1 priority 100
+standby 1 preempt
+exit
+router eigrp 100
+network 10.0.0.0
+network 12.0.0.0
+no auto-summary
+exit
+access-list 101 deny icmp any any echo
+access-list 101 permit ip any any
+interface f0/0
+ip access-group 101 in
+exit
+interface f0/1
+ip access-group 101 in
+exit
+interface loopback 3
+ip address 192.168.103.3 255.255.255.0
+exit
+router rip
+version 2
+network 192.168.103.0
+network 10.0.0.0
+network 12.0.0.0
+no auto-summary
+exit
+aaa new-model
+aaa authentication login default local
+username cisco secret cisco
+line vty 0 4
+password cisco
+login local
+transport input telnet
+exit
+ntp authenticate
+ntp authentication-key 1 md5 cisco
+ntp trusted-key 1
+ntp server 10.0.0.100 key 1
+logging host 10.0.0.100
+end
+copy running-config tftp://10.0.0.100/r3-config.cfg
+write memory
+```
