@@ -39,7 +39,6 @@
 Конфигурация устройств:
 
 CMERouter
-``
 Current configuration : 949 bytes
 !
 version 15.1
@@ -137,7 +136,7 @@ line vty 0 4
 !
 !
 end
-``
+
 
 SwitchA
 ``
