@@ -475,5 +475,39 @@ CME: встроена в маршрутизатор, до ~240 абоненто�
 6 dns-server <адрес> — DNS-сервер (опционально).
 7 lease <дни часы минуты> — время аренды.
 
-#### 3	Лабораторная	работа	№3.	Настройка	конфигурации	Cisco CallManager Express на маршрутизаторе Cisco 2811
+## 3	Лабораторная	работа	№3.	Настройка	конфигурации	Cisco CallManager Express на маршрутизаторе Cisco 2811
 Цель работы: изучить построение сети IP-телефонии с помощью маршрутизатора Cisco 2811, коммутатора Cisco catalyst 3560 и IP телефонов Cisco 7960.
+1) Строим топологию сети
+
+<img width="556" height="408" alt="image" src="https://github.com/user-attachments/assets/62820e80-11c3-419a-8732-6cdcb8dc724a" />
+
+2) Меняем название	маршрутизатора на CMERouter.
+
+<img width="307" height="42" alt="image" src="https://github.com/user-attachments/assets/ce7ba5d2-34e2-4367-9dc3-939d16cef345" />
+
+Отключаем синтаксис ввода слов от DNS серверов:
+
+<img width="358" height="43" alt="image" src="https://github.com/user-attachments/assets/29fcd2c6-9ddc-4080-ba98-41897b21c0a9" />
+
+3) Задаём	пароли	для	защиты	маршрутизатора как в удаленном режиме, так и в режиме консоли:
+
+<img width="398" height="151" alt="image" src="https://github.com/user-attachments/assets/5727c771-381a-4545-980b-8847202e54c3" />
+
+4)	Настроим	интерфейс	fa0/0	на	CMERouter.
+
+<img width="614" height="183" alt="image" src="https://github.com/user-attachments/assets/5860dfba-5c1f-4b5b-89e0-9bae8a896904" />
+
+5) Настраиваем DHCP	сервера
+
+<img width="493" height="103" alt="image" src="https://github.com/user-attachments/assets/fe0eaa65-acf8-4f5d-8627-123996f2a0b8" />
+
+6) Настраиваем	услуги	телефонии	Cisco	CallManager	Express	на CMERouter.
+
+<img width="586" height="124" alt="image" src="https://github.com/user-attachments/assets/9d3323bc-95a3-44dd-8da2-0833a49d4053" />
+
+7) Настраиваем порты SwitchA
+
+<img width="570" height="110" alt="image" src="https://github.com/user-attachments/assets/96212d5f-a817-4e48-bdc3-1be80fa0d99b" />
+
+8) Создаем логическую линию, а так же выполняем настройку номеров телефонов
+
