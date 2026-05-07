@@ -1688,6 +1688,7 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 
 <img width="1220" height="414" alt="image" src="https://github.com/user-attachments/assets/097bc012-5ad2-420b-a0ff-3d3a9450d44f" />
 
+Конфигурация устройств:
 #### RouterA
 ```
 
@@ -2617,7 +2618,1067 @@ RouterA(config-ephone-dn)#number 1101
 
 <img width="675" height="530" alt="image" src="https://github.com/user-attachments/assets/29886a80-cda1-4611-a6d6-b3171bd65ce2" />
 
+Меняем имена роутеров:
 
+<img width="663" height="33" alt="image" src="https://github.com/user-attachments/assets/7073228f-97cc-47b0-8beb-17b727448ecf" />
 
+Настраиваем порт в сторону коммутатора (CMERouter)
+
+<img width="614" height="217" alt="image" src="https://github.com/user-attachments/assets/d327bc10-665c-459b-b163-24b2c3e30abb" />
+
+Настраиваем DHCP-сервер для телефонов и ПК в центральном офисе:
+
+<img width="621" height="87" alt="image" src="https://github.com/user-attachments/assets/530c3d4a-c785-4c5c-a45b-f3a003ec4e58" />
+
+Включаем сервис IP-телефонии (CallManager Express):
+
+<img width="597" height="111" alt="image" src="https://github.com/user-attachments/assets/8debedc1-d71d-4285-9ca5-bff0dc07f707" />
+
+Создаем номера и "привязываем" их к телефонам по MAC-адресу:
+
+<img width="659" height="477" alt="image" src="https://github.com/user-attachments/assets/2aa94f07-d1ad-4297-9692-abd7f9cc4dc7" />
+
+Настраиваем порт в сторону CMERouter (Serial0/3/0):
+
+<img width="565" height="145" alt="image" src="https://github.com/user-attachments/assets/e008fbae-5fc7-4b19-abf9-086b9d1972fb" />
+
+Настройка статической маршрутизации:
+
+<img width="507" height="38" alt="image" src="https://github.com/user-attachments/assets/3592b9e3-2a78-4279-81c4-5c0320dfe7d8" />
+
+Настройка RemoteRouter (Удаленный офис)
+Проделываем аналогичные шаги, но с другими IP-адресами.
+
+Настройка порта в сторону коммутатора
+
+<img width="573" height="90" alt="image" src="https://github.com/user-attachments/assets/6e4ca260-7f2f-4dd0-b6c1-1d35189b64ca" />
+
+Настройка DHCP-сервера для удаленного офиса
+
+<img width="584" height="103" alt="image" src="https://github.com/user-attachments/assets/cfc27520-bfca-4c74-9905-98d63eee4d4a" />
+
+Включение сервиса IP-телефонии
+
+<img width="633" height="101" alt="image" src="https://github.com/user-attachments/assets/13067949-fc6b-45ba-a027-c5680fd08109" />
+
+Настройка третьего телефона (IP Phone2) с MAC-адресом, например, 0003.ABCD.9101
+
+<img width="821" height="280" alt="image" src="https://github.com/user-attachments/assets/e50d0720-972e-488a-96e6-8493fd90ede7" />
+
+Настройка порта в сторону Router0 (Serial0/3/0)
+
+<img width="554" height="128" alt="image" src="https://github.com/user-attachments/assets/4112c89b-aee5-44f5-8c4f-ffdc9934d102" />
+
+Настройка статической маршрутизации в обратную сторону
+
+<img width="594" height="35" alt="image" src="https://github.com/user-attachments/assets/a837943e-51d0-44d6-9efe-13f6d013c97d" />
+
+Настройка Multilayer SwitchA и SwitchB
+Переименовываем
+
+<img width="1059" height="51" alt="image" src="https://github.com/user-attachments/assets/c7486c49-bb46-4778-88a4-b0568c395a1f" />
+
+Настройки безопасности для SwitchA и SwitchB
+
+<img width="1330" height="337" alt="image" src="https://github.com/user-attachments/assets/31a3c46b-7d7c-43b6-8771-011c10f134b0" />
+
+Настройка правил набора номеров для связи между удалёнными офисами
+
+<img width="1182" height="150" alt="image" src="https://github.com/user-attachments/assets/92f9df40-71b0-4d13-a8c3-94d49d390096" />
+
+Проверяем IP-телефоны:
+
+<img width="721" height="269" alt="image" src="https://github.com/user-attachments/assets/dd714724-0e0b-4629-969d-3201dd0dbf80" />
+
+<img width="644" height="266" alt="image" src="https://github.com/user-attachments/assets/3326a0fd-c7cb-40fb-8e57-b9e8ea291a8a" />
+
+<img width="709" height="198" alt="image" src="https://github.com/user-attachments/assets/67b70814-22a1-43a3-b897-4b6abadd4e7f" />
+
+Звонок прошёл 
+
+<img width="1351" height="644" alt="image" src="https://github.com/user-attachments/assets/ee8a5cdb-ec5e-491e-9ac3-b6f01cdf2e05" />
+
+Конфигурация устройств:
+#### CMERouter
+```
+
+Building configuration...
+
+Current configuration : 1400 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname CMERouter
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+
+!
+
+ip dhcp pool LAN_CENTRAL
+
+ network 192.168.1.0 255.255.255.0
+
+ default-router 192.168.1.1
+
+ option 150 ip 192.168.1.1
+
+!
+
+!
+
+!
+
+no ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017J0JB-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 192.168.1.1 255.255.255.0
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Serial0/3/0
+
+ ip address 10.0.0.1 255.255.255.252
+
+ clock rate 64000
+
+!
+
+interface Serial0/3/1
+
+ no ip address
+
+ clock rate 2000000
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+ip route 172.16.1.0 255.255.255.0 10.0.0.2 
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+dial-peer voice 10 voip
+
+ destination-pattern 12..
+
+ session target ipv4:10.0.0.2
+
+!
+
+telephony-service
+
+ max-ephones 5
+
+ max-dn 5
+
+ ip source-address 192.168.1.1 port 2000
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 1101
+
+!
+
+ephone-dn 2
+
+ number 1102
+
+!
+
+ephone 1
+
+ device-security-mode none
+
+ mac-address 0001.C7D0.2E4C
+
+ type 7960
+
+ button 1:1
+
+!
+
+ephone 2
+
+ device-security-mode none
+
+ mac-address 000A.F36D.2661
+
+ type 7960
+
+ button 1:2
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
+#### RemoteRouter
+```
+
+Building configuration...
+
+Current configuration : 1262 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname RemoteRouter
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp excluded-address 172.16.1.1 172.16.1.10
+
+!
+
+ip dhcp pool LAN_REMOTE
+
+ network 172.16.1.0 255.255.255.0
+
+ default-router 172.16.1.1
+
+ option 150 ip 172.16.1.1
+
+!
+
+!
+
+!
+
+no ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017I9C7-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 172.16.1.1 255.255.255.0
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Serial0/3/0
+
+ ip address 10.0.0.2 255.255.255.252
+
+!
+
+interface Serial0/3/1
+
+ no ip address
+
+ clock rate 2000000
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+ip route 192.168.1.0 255.255.255.0 10.0.0.1 
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+dial-peer voice 10 voip
+
+ destination-pattern 11..
+
+session target ipv4:10.0.0.1
+
+!
+
+telephony-service
+
+ max-ephones 5
+
+ max-dn 5
+
+ ip source-address 172.16.1.1 port 2000
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 1201
+
+!
+
+ephone 1
+
+ device-security-mode none
+
+ mac-address 0090.2B20.485D
+
+ type 7960
+
+ button 1:1
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
+#### SwitchA
+```
+
+Building configuration...
+
+Current configuration : 1281 bytes
+
+!
+
+version 12.2(37)SE1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname SwitchA
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/1
+
+!
+
+interface FastEthernet0/2
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ spanning-tree portfast
+
+!
+
+interface FastEthernet0/3
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ spanning-tree portfast
+
+!
+
+interface FastEthernet0/4
+
+!
+
+interface FastEthernet0/5
+
+!
+
+interface FastEthernet0/6
+
+!
+
+interface FastEthernet0/7
+
+!
+
+interface FastEthernet0/8
+
+!
+
+interface FastEthernet0/9
+
+!
+
+interface FastEthernet0/10
+
+!
+
+interface FastEthernet0/11
+
+!
+
+interface FastEthernet0/12
+
+!
+
+interface FastEthernet0/13
+
+!
+
+interface FastEthernet0/14
+
+!
+
+interface FastEthernet0/15
+
+!
+
+interface FastEthernet0/16
+
+!
+
+interface FastEthernet0/17
+
+!
+
+interface FastEthernet0/18
+
+!
+
+interface FastEthernet0/19
+
+!
+
+interface FastEthernet0/20
+
+!
+
+interface FastEthernet0/21
+
+!
+
+interface FastEthernet0/22
+
+!
+
+interface FastEthernet0/23
+
+!
+
+interface FastEthernet0/24
+
+!
+
+interface GigabitEthernet0/1
+
+!
+
+interface GigabitEthernet0/2
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+!
+
+end
+
+```
+#### SwitchB
+```
+
+Building configuration...
+
+Current configuration : 1281 bytes
+
+!
+
+version 12.2(37)SE1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname SwitchB
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/1
+
+!
+
+interface FastEthernet0/2
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ spanning-tree portfast
+
+!
+
+interface FastEthernet0/3
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ spanning-tree portfast
+
+!
+
+interface FastEthernet0/4
+
+!
+
+interface FastEthernet0/5
+
+!
+
+interface FastEthernet0/6
+
+!
+
+interface FastEthernet0/7
+
+!
+
+interface FastEthernet0/8
+
+!
+
+interface FastEthernet0/9
+
+!
+
+interface FastEthernet0/10
+
+!
+
+interface FastEthernet0/11
+
+!
+
+interface FastEthernet0/12
+
+!
+
+interface FastEthernet0/13
+
+!
+
+interface FastEthernet0/14
+
+!
+
+interface FastEthernet0/15
+
+!
+
+interface FastEthernet0/16
+
+!
+
+interface FastEthernet0/17
+
+!
+
+interface FastEthernet0/18
+
+!
+
+interface FastEthernet0/19
+
+!
+
+interface FastEthernet0/20
+
+!
+
+interface FastEthernet0/21
+
+!
+
+interface FastEthernet0/22
+
+!
+
+interface FastEthernet0/23
+
+!
+
+interface FastEthernet0/24
+
+!
+
+interface GigabitEthernet0/1
+
+!
+
+interface GigabitEthernet0/2
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+!
+
+end
+```
+#### Контрольные вопросы:
+1. Как работает последовательное соединение между маршрутизаторами?
+Один маршрутизатор является ведущим (DCE) и задает тактовую частоту командой clock rate. Второй маршрутизатор является ведомым (DTE) и синхронизируется по этой частоте. В лабораторной работе Cisco 2811 является DCE, а Cisco 2600 — DTE.
+
+2. Какие скорости доступны для последовательного соединения?
+В лабораторной работе №8 в команде clock rate 2000000 используется скорость 2 Мбит/с. На реальном оборудовании Cisco для последовательных интерфейсов доступны скорости: 1200, 2400, 4800, 9600, 19200, 38400, 56000, 64000, 72000, 125000, 148000, 250000, 500000, 800000, 1000000, 1300000, 2000000, 4000000, 8000000 бит/с и выше, вплоть до 8 Мбит/с и более в зависимости от типа интерфейса и кабеля.
+
+4. Минимальная необходимая скорость соединения для обеспечения качества обслуживания голосового трафика.
+Минимальная скорость-около 100 кбит/с на один вызов при кодеке G.711, около 30-40 кбит/с при кодеке G.729.
+
+5. Принцип работы протокола LDP.
+LDP (Label Distribution Protocol)-протокол распределения меток в MPLS-сетях. Он используется для установления и поддержания таблиц коммутации по меткам между соседними маршрутизаторами LSR.
+
+6. Уровни архитектуры IP-телефонии.
+Выделяют три уровня: уровень сигнализации (установление и завершение вызовов — SIP, H.323), уровень передачи голоса (транспорт RTP/UDP) и уровень кодирования/декодирования (кодеки G.711, G.729).
+
+7. Как можно выйти в сеть PSTN через IP телефон?
+Через маршрутизатор с интерфейсами FXO или FXS, подключенный к телефонной сети общего пользования.
+
+8. Как работают сервисы IP телефонии: перевод звонка, конференц-связь?
+Перевод звонка-перенаправление вызова на другой номер. Конференц-связь-объединение трех и более абонентов в одном разговоре.
+
+9. Как работает сервис IP телефонии — перехват звонка?
+Перехват звонка (call pickup) — функция, позволяющая абоненту ответить на звонок, адресованный другому телефону в той же группе перехвата.
 
 
