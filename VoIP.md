@@ -1640,9 +1640,9 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 
 <img width="641" height="48" alt="image" src="https://github.com/user-attachments/assets/ec1731c1-3b96-4a11-8878-9f22cc8c6d78" />
 
-2) Конфигурация интерфейса fa0/0 на маршрутизаторе RouterA: 
+2) Конфигурация интерфейса fa0/0 на RouterA и RouterB: 
 
-<img width="608" height="197" alt="image" src="https://github.com/user-attachments/assets/58032857-27ec-428e-bb63-6cc3e9b86428" />
+<img width="1177" height="229" alt="image" src="https://github.com/user-attachments/assets/398409d7-6d2b-4654-92e9-5fa1aeaa273b" />
 
 3) Конфигурация интерфейса fa0/0 на маршрутизаторе RouterB: 
 
@@ -1686,9 +1686,932 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 
 13) Проверка вызова c телефонов
 
+<img width="1220" height="414" alt="image" src="https://github.com/user-attachments/assets/097bc012-5ad2-420b-a0ff-3d3a9450d44f" />
+
+#### RouterA
+```
+
+Building configuration...
+
+Current configuration : 1230 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname RouterA
+
+!
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp pool T1
+
+ network 192.168.1.0 255.255.255.224
+
+ default-router 192.168.1.1
+
+ option 150 ip 192.168.1.1
+
+!
+
+!
+
+!
+
+no ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017N21X-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 192.168.1.1 255.255.255.224
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Serial0/2/0
+
+ ip address 10.0.1.1 255.255.255.252
+
+ clock rate 64000
+
+!
+
+interface Serial0/2/1
+
+ no ip address
+
+ clock rate 2000000
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+router rip
+
+ version 2
+
+ network 10.0.0.0
+
+ network 192.168.1.0
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+dial-peer voice 1 voip
+
+ destination-pattern 12..
+
+ session target ipv4:10.0.1.2
+
+!
+
+telephony-service
+
+ max-ephones 5
+
+ max-dn 5
+
+ ip source-address 192.168.1.1 port 2000
+
+ auto assign 4 to 6
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 1101
+
+!
+
+ephone-dn 2
+
+ number 1102
+
+!
+
+ephone-dn 3
+
+ number 1103
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
+#### RouterB
+```
+
+Building configuration...
+
+Current configuration : 1206 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname RouterB
+
+!
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp pool T2
+
+ network 172.16.1.0 255.255.255.224
+
+ default-router 172.16.1.1
+
+ option 150 ip 172.16.1.1
+
+!
+
+!
+
+!
+
+no ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017S278-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 172.16.1.1 255.255.255.224
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Serial0/0/0
+
+ ip address 10.0.1.2 255.255.255.252
+
+!
+
+interface Serial0/0/1
+
+ no ip address
+
+ clock rate 2000000
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+router rip
+
+ version 2
+
+ network 10.0.0.0
+
+ network 172.16.0.0
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+dial-peer voice 1 voip
+
+ destination-pattern 11..
+
+ session target ipv4:10.0.1.1
+
+!
+
+telephony-service
+
+ max-ephones 5
+
+ max-dn 5
+
+ ip source-address 172.16.1.1 port 2000
+
+ auto assign 4 to 6
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 1201
+
+!
+
+ephone-dn 2
+
+ number 1202
+
+!
+
+ephone-dn 3
+
+ number 1203
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+
+```
+#### SwitchA
+```
+
+Building configuration...
+
+Current configuration : 1201 bytes
+
+!
+
+version 15.0
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname SwitchA
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+spanning-tree extend system-id
+
+!
+
+interface FastEthernet0/1
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/2
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/3
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/4
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/5
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/6
+
+!
+
+interface FastEthernet0/7
+
+!
+
+interface FastEthernet0/8
+
+!
+
+interface FastEthernet0/9
+
+!
+
+interface FastEthernet0/10
+
+!
+
+interface FastEthernet0/11
+
+!
+
+interface FastEthernet0/12
+
+!
+
+interface FastEthernet0/13
+
+!
+
+interface FastEthernet0/14
+
+!
+
+interface FastEthernet0/15
+
+!
+
+interface FastEthernet0/16
+
+!
+
+interface FastEthernet0/17
+
+!
+
+interface FastEthernet0/18
+
+!
+
+interface FastEthernet0/19
+
+!
+
+interface FastEthernet0/20
+
+!
+
+interface FastEthernet0/21
+
+!
+
+interface FastEthernet0/22
+
+!
+
+interface FastEthernet0/23
+
+!
+
+interface FastEthernet0/24
+
+!
+
+interface GigabitEthernet0/1
+
+!
+
+interface GigabitEthernet0/2
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+!
+
+!
+
+!
+
+line con 0
+
+!
+
+line vty 0 4
+
+ login
+
+line vty 5 15
+
+ login
+
+!
+
+!
+
+!
+
+!
+
+end
+
+```
+#### SwitchB
+```
+
+Building configuration...
+
+Current configuration : 1206 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname RouterB
+
+!
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp pool T2
+
+ network 172.16.1.0 255.255.255.224
+
+ default-router 172.16.1.1
+
+ option 150 ip 172.16.1.1
+
+!
+
+!
+
+!
+
+no ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017S278-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 172.16.1.1 255.255.255.224
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Serial0/0/0
+
+ ip address 10.0.1.2 255.255.255.252
+
+!
+
+interface Serial0/0/1
+
+ no ip address
+
+ clock rate 2000000
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+router rip
+
+ version 2
+
+ network 10.0.0.0
+
+ network 172.16.0.0
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+dial-peer voice 1 voip
+
+ destination-pattern 11..
+
+ session target ipv4:10.0.1.1
+
+!
+
+telephony-service
+
+ max-ephones 5
+
+ max-dn 5
+
+ ip source-address 172.16.1.1 port 2000
+
+ auto assign 4 to 6
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 1201
+
+!
+
+ephone-dn 2
+
+ number 1202
+
+!
+
+ephone-dn 3
+
+ number 1203
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
 
 
+#### Контрольные вопросы
+1. Протоколы маршрутизаций и маршрутизируемые протоколы?
+Протоколы маршрутизации (RIP, OSPF, EIGRP, IGRP) служат для обмена информацией о сетях между маршрутизаторами и автоматического построения маршрутных таблиц. Маршрутизируемые протоколы (IP, IPX)-это протоколы, которые могут передаваться через сеть от узла к узлу, и для них маршрутизаторы строят маршруты.
 
+2. Протокол RIP. Механизмы предотвращения петель маршрутизации (poisoned reverse, split horizon, hop-count limit), сравнение RIP и IGRP.
+RIP использует следующие механизмы: split horizon, poisoned reverse, hop-count limit. RIP и IGRP: RIP использует метрику «количество хопов», IGRP-композитную метрику. IGRP работает только с Cisco, RIP-открытый стандарт.
+
+3. Каким образом производится настройка DHCP-сервера на маршрутизаторе?
+Создается пул DHCP командой ip dhcp pool T1, задается сеть командой network 192.168.1.0 255.255.255.224, указывается шлюз командой default-router 192.168.1.1, для голоса включается опция 150 командой option 150 ip 192.168.1.1.
+
+4. Как работает последовательное соединение между маршрутизаторами?
+Последовательное соединение используется для WAN-связей. Один маршрутизатор на стороне DCE задает тактовую частоту командой clock rate, другой на стороне DTE синхронизируется по этой частоте. Передача битов идет последовательно по одному каналу.
+
+5. Какие скорости доступны для последовательного соединения?
+Стандартные скорости: 2400, 9600, 19200, 38400, 56000, 64000, 128000, 256000, 512000, 1024000, 2048000 бит/с и выше.
+
+6. Минимальная необходимая скорость соединения для обеспечения качества обслуживания голосового трафика.
+Минимальная скорость-около 100 кбит/с на один вызов при использовании кодека G.711 (без сжатия). При использовании сжатых кодеков-около 30-40 кбит/с на вызов.
+
+7. Как можно выйти в сеть PSTN через IP телефон?
+Через шлюз VoIP, который подключается к телефонной сети общего пользования. IP-телефон звонит на номер, маршрутизатор преобразует голос в сигнал, понятный для PSTN, и передает вызов через аналоговую или цифровую линию.
+
+8. Какой командой можно присвоить номера телефонов телефонам?
+Командой number в режиме конфигурации ephone-dn.
+Например:
+RouterA(config)#ephone-dn 1
+RouterA(config-ephone-dn)#number 1101
+
+Лабораторная работа №8. Построение сети IP-телефонии между удаленными маршрутизаторами
+Цель работы: изучить построение сети IP-телефонии между удаленными филиалами с помощью маршрутизаторов Cisco 2811 и Cisco 2600XM.
 
 
 
