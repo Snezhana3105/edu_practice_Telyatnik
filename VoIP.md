@@ -1629,10 +1629,58 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 Маршрут по умолчанию задается командой ip default-gateway <адрес> в конфигурационном режиме коммутатора.
 Например: Switch(config)# ip default-gateway 192.168.99.1.
 
+#### Лабораторная работа №7. Построение сети IP-телефонии между удаленными маршрутизаторами в среде Cisco Packet Tracer
+Цель работы: изучить построение сети IP-телефонии между удаленными филиалами с помощью маршрутизаторов Cisco 2811 и коммутаторов Cisco 2950Т.
 
+Создаём схему соединения:
 
+<img width="829" height="571" alt="image" src="https://github.com/user-attachments/assets/426b4f6c-e30f-487d-b1bb-23ac7b3767d8" />
 
+1) Меняем	название	маршрутизаторов на RouterA и RouterB:
 
+<img width="641" height="48" alt="image" src="https://github.com/user-attachments/assets/ec1731c1-3b96-4a11-8878-9f22cc8c6d78" />
+
+2) Конфигурация интерфейса fa0/0 на маршрутизаторе RouterA: 
+
+<img width="608" height="197" alt="image" src="https://github.com/user-attachments/assets/58032857-27ec-428e-bb63-6cc3e9b86428" />
+
+3) Конфигурация интерфейса fa0/0 на маршрутизаторе RouterB: 
+
+<img width="648" height="198" alt="image" src="https://github.com/user-attachments/assets/12af3b36-e523-4dec-8ae3-b89f2cc61e0b" />
+
+4) Конфигурация интерфейса s0/3/0 на маршрутизаторах Cisco 2811: 
+
+<img width="1345" height="280" alt="image" src="https://github.com/user-attachments/assets/4d000eef-9f59-4757-99bb-9ebad78c69d8" />
+
+5) Создаём пулы DHCP адреса с названием Т1/T2:
+
+<img width="1291" height="169" alt="image" src="https://github.com/user-attachments/assets/3c0324dd-2bf0-43f3-bb60-fbec8ad4b15f" />
+
+6) Настройка протокола RIPv2 на RouterA и RouterB:
+
+<img width="1117" height="87" alt="image" src="https://github.com/user-attachments/assets/ce08ad33-6602-4221-8478-0699b373fd79" />
+
+7) Настройка CallManager Express на RouterA и RouterB:
+
+<img width="1356" height="239" alt="image" src="https://github.com/user-attachments/assets/b0fa26f3-0670-48bc-afad-84014a76dfbc" />
+
+8) Меняем имена коммутаторов
+
+<img width="642" height="45" alt="image" src="https://github.com/user-attachments/assets/830539d1-921f-4f94-9bfa-33ade877ab64" />
+
+9) Настраиваем порты на SwitchA и SwitchB
+
+<img width="892" height="96" alt="image" src="https://github.com/user-attachments/assets/5a23ca0f-88e4-47ad-9baa-68709fb65cd2" />
+
+10) Настраиваем логические линии связи, указываем номера для телефонов
+
+<img width="1345" height="334" alt="image" src="https://github.com/user-attachments/assets/e420f102-5d75-405b-b4c1-fe7dc98d13c8" />
+
+11) Настраиваем RouterA и RouterB для идентификации конечных точек вызова
+
+<img width="1002" height="117" alt="image" src="https://github.com/user-attachments/assets/bb0d79a5-dd75-4e62-a4d4-379ff615ebfa" />
+
+12) Проверка пинга
 
 
 
