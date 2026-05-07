@@ -499,11 +499,11 @@ CME: встроена в маршрутизатор, до ~240 абоненто�
 
 5) Настраиваем DHCP	сервера
 
-<img width="493" height="103" alt="image" src="https://github.com/user-attachments/assets/fe0eaa65-acf8-4f5d-8627-123996f2a0b8" />
+<img width="484" height="141" alt="image" src="https://github.com/user-attachments/assets/c0987417-2d68-42d1-bb1f-64bb0847941e" />
 
 6) Настраиваем	услуги	телефонии	Cisco	CallManager	Express	на CMERouter.
 
-<img width="586" height="124" alt="image" src="https://github.com/user-attachments/assets/9d3323bc-95a3-44dd-8da2-0833a49d4053" />
+<img width="580" height="168" alt="image" src="https://github.com/user-attachments/assets/3bf5385b-9194-4fcb-8699-8f9294452ee1" />
 
 7) Настраиваем порты SwitchA
 
