@@ -507,7 +507,565 @@ CME: встроена в маршрутизатор, до ~240 абоненто�
 
 7) Настраиваем порты SwitchA
 
-<img width="570" height="110" alt="image" src="https://github.com/user-attachments/assets/96212d5f-a817-4e48-bdc3-1be80fa0d99b" />
+<img width="427" height="118" alt="image" src="https://github.com/user-attachments/assets/d316100e-a545-4658-b7e2-ddd888f585fc" />
 
 8) Создаем логическую линию, а так же выполняем настройку номеров телефонов
+
+<img width="786" height="303" alt="image" src="https://github.com/user-attachments/assets/2d98908d-b69f-4725-8993-c1d670230a72" />
+
+9) Подключаем телефоны к питанию:
+
+<img width="682" height="441" alt="image" src="https://github.com/user-attachments/assets/948ae96c-02ee-4f1b-890f-3a7ece833cf6" />
+
+10) Выполняем звонок на внутренние номера
+
+<img width="1383" height="658" alt="image" src="https://github.com/user-attachments/assets/858c3621-2f25-4700-862a-15fb96c23ebc" />
+
+11) Выполняем ping на телефоны c CMERouter.
+
+<img width="628" height="358" alt="image" src="https://github.com/user-attachments/assets/d700eb02-e632-492d-9516-b0acab1e7f48" />
+
+Конфигурация устройств:
+
+#### CMERouter
+```
+
+Building configuration...
+
+
+
+Current configuration : 1312 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname CMERouter
+
+!
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp pool VOICE
+
+ network 192.168.10.0 255.255.255.0
+
+ default-router 192.168.10.1
+
+ option 150 ip 192.168.10.1
+
+!
+
+!
+
+!
+
+ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017C63W-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+no ip domain-lookup
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ ip address 192.168.10.1 255.255.255.0
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+telephony-service
+
+max-ephones 5
+
+ max-dn 5
+
+ ip source-address 192.168.10.1 port 2000
+
+ auto assign 4 to 6
+
+ auto assign 1 to 5
+
+!
+
+ephone-dn 1
+
+ number 54001
+
+!
+
+ephone-dn 2
+
+ number 54002
+
+!
+
+ephone-dn 3
+
+ number 54003
+
+!
+
+ephone 1
+
+ device-security-mode none
+
+ mac-address 0006.2AB4.0B6B
+
+ type 7960
+
+ button 1:1
+
+!
+
+ephone 2
+
+ device-security-mode none
+
+ mac-address 00E0.B016.1872
+
+ type 7960
+
+ button 1:2
+
+!
+
+ephone 3
+
+ device-security-mode none
+
+ mac-address 0090.2123.1084
+
+ type 7960
+
+ button 1:3
+
+!
+
+line con 0
+
+ password cisco
+
+ logging synchronous
+
+ login
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ password cisco
+
+ logging synchronous
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
+
+#### SwitchA
+```
+Building configuration...
+
+Current configuration : 1501 bytes
+
+!
+
+version 12.2(37)SE1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname Switch
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/1
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ switchport voice vlan 1
+
+!
+
+interface FastEthernet0/2
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ switchport voice vlan 1
+
+!
+
+interface FastEthernet0/3
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ switchport voice vlan 1
+
+!
+
+interface FastEthernet0/4
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ switchport voice vlan 1
+
+!
+
+interface FastEthernet0/5
+
+ switchport mode access
+
+ switchport nonegotiate
+
+ switchport voice vlan 1
+
+!
+
+interface FastEthernet0/6
+
+!
+
+interface FastEthernet0/7
+
+!
+
+interface FastEthernet0/8
+
+!
+
+interface FastEthernet0/9
+
+!
+
+interface FastEthernet0/10
+
+!
+
+interface FastEthernet0/11
+
+!
+
+interface FastEthernet0/12
+
+!
+
+interface FastEthernet0/13
+
+!
+
+interface FastEthernet0/14
+
+!
+
+interface FastEthernet0/15
+
+!
+
+interface FastEthernet0/16
+
+!
+
+interface FastEthernet0/17
+
+!
+
+interface FastEthernet0/18
+
+!
+
+interface FastEthernet0/19
+
+!
+
+interface FastEthernet0/20
+
+!
+
+interface FastEthernet0/21
+
+!
+
+interface FastEthernet0/22
+
+!
+
+interface FastEthernet0/23
+
+!
+
+interface FastEthernet0/24
+
+!
+
+interface GigabitEthernet0/1
+
+!
+
+interface GigabitEthernet0/2
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+!
+
+end
+```
+
+#### Контрольные вопросы
+1. Принцип работы протокола SIP?
+SIP (Session Initiation Protocol)-протокол сигнализации прикладного уровня для установления, изменения и завершения сеансов связи. Он передаёт текстовые запросы (INVITE, ACK, BYE, REGISTER) по модели «клиент-сервер». Голосовой трафик передаётся отдельно по протоколу RTP.
+
+2. Как создается VLAN для голосового трафика?
+На коммутаторе в конфигурационном режиме для диапазона портов задаются команды switchport mode access и switchport voice vlan 1.
+
+3. Система Cisco Call Manager?
+Cisco Unified Call Manager-корпоративная платформа IP-телефонии, работающая на выделенных серверах. Поддерживает тысячи абонентов, кластеризацию, резервирование и расширенные функции.
+
+4. Система Cisco Call Manager Express?
+CME-телефонный сервис, встроенный в маршрутизатор, работающий в автоматическом диалоговом режиме. На маршрутизаторе Cisco 2811 максимальное количество телефонов-96, номеров-5. Включается командой telephony-service.
+
+5. Чем отличается система Cisco Call Manager от системы Cisco Call Manager Express?
+CUCM работает на отдельном сервере, поддерживает тысячи абонентов, управляется через веб-интерфейс. CME встроен в маршрутизатор, поддерживает до 240 абонентов, настраивается через CLI.
+
+6. Что дает команда spanning-tree portfast?
+Команда переводит порт коммутатора сразу в режим forwarding, пропуская стадии listening и learning, что ускоряет подключение конечных устройств.
+
+7. Требования к сети при передаче голосового трафика?
+Задержка не более 150 мс, джиттер не более 30 мс, потери пакетов не более 1%, приоритезация голоса через QoS, достаточная пропускная способность.
+
+8. Основные команды конфигурирования DHCP сервера на маршрутизаторе?
+ip dhcp pool VOICE-создание пула,
+network 192.168.10.0 255.255.255.0-задание сети,
+default-router 192.168.10.1-указание шлюза,
+option 150 ip 192.168.10.1-опция для TFTP-сервера CME.
+
+#### Лабораторная работа №4. Конфигурация VOIP в среде Cisco Packet Tracer
+Цель	работы:	изучить	построение	сети	IP-телефонии,	научиться стандартной настройке технологии VOIP.
 
