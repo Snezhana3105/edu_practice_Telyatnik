@@ -1069,3 +1069,578 @@ option 150 ip 192.168.10.1-опция для TFTP-сервера CME.
 #### Лабораторная работа №4. Конфигурация VOIP в среде Cisco Packet Tracer
 Цель	работы:	изучить	построение	сети	IP-телефонии,	научиться стандартной настройке технологии VOIP.
 
+Создаём схему соединения:
+
+<img width="708" height="521" alt="image" src="https://github.com/user-attachments/assets/0c898e40-a543-4c24-9240-3c845037834e" />
+
+1) Создание vlan и присвоение им наименований. 
+
+<img width="616" height="252" alt="image" src="https://github.com/user-attachments/assets/0d35cab2-cc5e-4e7a-8a63-7b7a931e1c8a" />
+
+2) Настройка vlan 99:
+
+<img width="520" height="180" alt="image" src="https://github.com/user-attachments/assets/27148c4f-f44a-4f19-8de5-8c5366fb760f" />
+
+3) Задаём маршрут по умолчанию
+
+<img width="468" height="121" alt="image" src="https://github.com/user-attachments/assets/1fc3dd68-7129-4a61-bcdd-6ac746299b20" />
+
+4) Настройка интерфейса управления коммутатором в сети VLAN через назначение диапазона портов:
+
+<img width="502" height="134" alt="image" src="https://github.com/user-attachments/assets/ab8e7f76-c593-47f1-ab5b-bfd664744fcc" />
+
+5) Включаем интерфейс F0/0:
+
+<img width="626" height="247" alt="image" src="https://github.com/user-attachments/assets/e19f7075-3cb4-4370-8eda-9fdc56f37f3d" />
+
+6) Создаем логический подинтерфейсы для VLAN 10, VLAN 20, VLAN 99: 
+
+<img width="620" height="180" alt="image" src="https://github.com/user-attachments/assets/1264eb8c-6426-4339-a8f3-6117bff04f5d" />
+
+*Создание подинтерфейсов для VLAN 10*
+
+<img width="617" height="176" alt="image" src="https://github.com/user-attachments/assets/914fe1b0-9594-4a5a-9359-5b6c90e72d97" />
+
+*Создание подинтерфейсов для VLAN 20*
+
+<img width="642" height="207" alt="image" src="https://github.com/user-attachments/assets/1c8f3088-6171-460a-9e2f-e742e9ef7e28" />
+
+*Создание подинтерфейсов для VLAN 99*
+
+7) Исключаем из пула адрес интерфейса маршрутизатора и DNS-сервера: 
+
+<img width="560" height="47" alt="image" src="https://github.com/user-attachments/assets/f42dafac-102a-4a92-b7c3-d5ba49fc511f" />
+
+8) Настраиваем	DHCP	сервера	для	передачи	голоса	и	данных	на маршрутизаторе Cisco 2811:
+
+<img width="488" height="190" alt="image" src="https://github.com/user-attachments/assets/011106b2-4c6b-4ef8-a84e-613ff56aac22" />
+
+9) Настройка телефонного сервиса в автоматическом режиме: 
+
+<img width="564" height="97" alt="image" src="https://github.com/user-attachments/assets/33e98a84-b5ee-4ee4-b447-0d89f67353b2" />
+
+10) Присваиваем номера для всех IP-телефонов в сети: 
+
+<img width="649" height="244" alt="image" src="https://github.com/user-attachments/assets/b8b81acb-3e6a-4d13-aae0-6aeca4b29135" />
+
+*Настройка данных телефонов*
+
+<img width="581" height="237" alt="image" src="https://github.com/user-attachments/assets/ace12fa5-3c9c-4c43-b701-f02abf5f8c76" />
+
+*Настройка данных телефонов*
+
+Конфигурация устройств:
+### Router0
+```
+
+Building configuration...
+
+Current configuration : 1612 bytes
+
+!
+
+version 15.1
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname Router
+
+!
+
+!
+
+!
+
+!
+
+ip dhcp excluded-address 192.168.10.1 192.168.10.9
+
+ip dhcp excluded-address 192.168.20.1 192.168.20.9
+
+!
+
+ip dhcp pool Data
+
+ network 192.168.10.0 255.255.255.0
+
+ default-router 192.168.10.1
+
+ip dhcp pool Voice
+
+ network 192.168.20.0 255.255.255.0
+
+default-router 192.168.20.1
+
+ option 150 ip 192.168.20.1
+
+!
+
+!
+
+!
+
+ip cef
+
+no ipv6 cef
+
+!
+
+!
+
+!
+
+!
+
+license udi pid CISCO2811/K9 sn FTX1017XX2R-
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+interface FastEthernet0/0
+
+ no ip address
+
+ duplex auto
+
+ speed auto
+
+!
+
+interface FastEthernet0/0.10
+
+ encapsulation dot1Q 10
+
+ ip address 192.168.10.1 255.255.255.0
+
+!
+
+interface FastEthernet0/0.20
+
+ encapsulation dot1Q 20
+
+ ip address 192.168.20.1 255.255.255.0
+
+!
+
+interface FastEthernet0/0.99
+
+ encapsulation dot1Q 99 native
+
+ ip address 192.168.99.1 255.255.255.0
+
+!
+
+interface FastEthernet0/1
+
+ no ip address
+
+duplex auto
+
+ speed auto
+
+ shutdown
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+ip classless
+
+!
+
+ip flow-export version 9
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+telephony-service
+
+ max-ephones 3
+
+ max-dn 3
+
+ ip source-address 192.168.20.1 port 2000
+
+!
+
+ephone-dn 1
+
+ number 101
+
+!
+
+ephone-dn 2
+
+ number 102
+
+!
+
+ephone-dn 3
+
+ number 103
+
+!
+
+ephone 1
+
+ device-security-mode none
+
+ mac-address 00D0.D389.A321
+
+ type 7960
+
+ button 1:1
+
+!
+
+ephone 2
+
+ device-security-mode none
+
+ mac-address 00E0.F737.1C36
+
+ type 7960
+
+ button 1:2
+
+!
+
+ephone 3
+
+ device-security-mode none
+
+ mac-address 0005.5E34.7BE9
+
+ type 7960
+
+ button 1:3
+
+!
+
+line con 0
+
+!
+
+line aux 0
+
+!
+
+line vty 0 4
+
+ login
+
+!
+
+!
+
+!
+
+end
+```
+### Switch0
+```
+Building configuration...
+
+Current configuration : 1382 bytes
+
+!
+
+version 15.0
+
+no service timestamps log datetime msec
+
+no service timestamps debug datetime msec
+
+no service password-encryption
+
+!
+
+hostname Switch
+
+!
+
+!
+
+!
+
+!
+
+!
+
+!
+
+spanning-tree mode pvst
+
+spanning-tree extend system-id
+
+!
+
+interface FastEthernet0/1
+
+ switchport trunk native vlan 99
+
+ switchport mode trunk
+
+!
+
+interface FastEthernet0/2
+
+ switchport access vlan 20
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/3
+
+ switchport access vlan 20
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/4
+
+ switchport access vlan 20
+
+ switchport mode access
+
+!
+
+interface FastEthernet0/5
+
+!
+
+interface FastEthernet0/6
+
+!
+
+interface FastEthernet0/7
+
+!
+
+interface FastEthernet0/8
+
+!
+
+interface FastEthernet0/9
+
+!
+
+interface FastEthernet0/10
+
+!
+
+interface FastEthernet0/11
+
+!
+
+interface FastEthernet0/12
+
+!
+
+interface FastEthernet0/13
+
+!
+
+interface FastEthernet0/14
+
+!
+
+interface FastEthernet0/15
+
+!
+
+interface FastEthernet0/16
+
+!
+
+interface FastEthernet0/17
+
+!
+
+interface FastEthernet0/18
+
+!
+
+interface FastEthernet0/19
+
+!
+
+interface FastEthernet0/20
+
+!
+
+interface FastEthernet0/21
+
+!
+
+interface FastEthernet0/22
+
+!
+
+interface FastEthernet0/23
+
+!
+
+interface FastEthernet0/24
+
+!
+
+interface GigabitEthernet0/1
+
+!
+
+interface GigabitEthernet0/2
+
+!
+
+interface Vlan1
+
+ no ip address
+
+ shutdown
+
+!
+
+interface Vlan99
+
+ ip address 192.168.99.10 255.255.255.0
+
+!
+
+ip default-gateway 192.168.99.1
+
+!
+
+!
+
+!
+
+!
+
+line con 0
+
+!
+
+line vty 0 4
+
+ login
+
+line vty 5 15
+
+ login
+
+!
+
+!
+
+!
+
+!
+
+end
+```
+#### Контрольные вопросы
+1. Что такое SIP-телефоны?
+SIP-телефоны-это телефоны, работающие по протоколу SIP, которые позволяют совершать звонки через IP-сеть.
+
+2. Что такое Voice over IP?
+Это технология передачи голоса по IP-сетям.
+
+3. VOIP – определение.
+VoIP-это технология, которая обеспечивает передачу голоса в сетях с пакетной коммутацией по протоколу IP, частным случаем которых являются сети Интернет, а также другие IP-сети.
+
+4. Где можно найти хороший источник информации о VOIP?
+- Официальная документация Cisco (cisco.com)
+- Книги: «IP телефония» Д. Коллинза, «Компьютерные сети» Э. Таненбаума
+- Сайты: Habr, Cisco Networking Academy, IT-блоги на Medium
+- RFC-документы
+
+
+5. Что такое IP-телефон / IP телефоны?
+IP-телефон-это устройство или программа, дающее возможность пользователю звонить на любой другой софтфон, мобильный или обычный телефон, используя передачу голоса по IP. VoIP-телефон может представлять собой простой программный софтфон или устройство, очень похожее на обычный телефон.
+
+6. Что такое IP-телефония?
+IP-телефония-это технология передачи голоса по IP-сетям.
+
+7. Что такое VoIP-телефон?
+VoIP-телефон-это то же, что IP-телефон-устройство или программа для звонков через Интернет.
+
+8. Каким образом создается маршрут по умолчанию?
+Маршрут по умолчанию задается командой ip default-gateway <адрес> в конфигурационном режиме коммутатора.
+Например: Switch(config)# ip default-gateway 192.168.99.1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
