@@ -1682,6 +1682,11 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 
 12) Проверка пинга
 
+<img width="523" height="198" alt="image" src="https://github.com/user-attachments/assets/a0f62f31-a7b8-4736-9d51-9a132952f71a" />
+
+13) Проверка вызова c телефонов
+
+
 
 
 
