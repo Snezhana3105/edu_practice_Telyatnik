@@ -5,37 +5,49 @@
 
 <img width="688" height="446" alt="image" src="https://github.com/user-attachments/assets/ac2fe0fc-d643-46ec-aa29-016ff83c7f29" />
 
-*Схема соединения IP – телефонов с маршрутизатором через коммутатор*
+*Топология сети*
 
 1) Изменяем имя маршрутизатора на CMERouter.
 
 <img width="316" height="35" alt="image" src="https://github.com/user-attachments/assets/485ce061-0cb6-4203-9620-4b4ec9928b0d" />
 
+*Изменение имени маршрутизатора на CMERouter*
 
 Отключаем синтаксис ввода слов от DNS серверов:
 
 <img width="342" height="39" alt="image" src="https://github.com/user-attachments/assets/ad1ce8d6-e655-436d-b4bf-aea5b75404d3" />
 
+*Отключение синтаксиса ввода слов от DNS серверов*
+
 2) Настраиваем интерфейс	fa0/0	на	CMERouter.
 
 <img width="598" height="187" alt="image" src="https://github.com/user-attachments/assets/a9794b5d-4cb4-43a5-b6dc-d5d333f9837b" />
+
+*Настройка интерфейса	fa0/0	на	CMERouter*
 
 3) Настраиваем DHCP	сервера
 
 <img width="474" height="74" alt="image" src="https://github.com/user-attachments/assets/6b941527-b967-4ac7-b703-527fd95e9be9" />
 
+*Настройка DNS сурвера*
+
 4) Настраиваем	услуги	телефонии	Cisco	CallManager	Express	на CMERouter.
 
 <img width="582" height="140" alt="image" src="https://github.com/user-attachments/assets/f9f6aa2e-03cc-4ff5-a67e-1d4b7b62c92f" />
+
+*Настройка услуг телефонии Cisco CallManager Express на CMERouter*
 
 5) Настраиваем VLAN на интерефейсах SwitchA
 
 <img width="403" height="107" alt="image" src="https://github.com/user-attachments/assets/61ce9f81-1c83-4321-b8ae-f5b975489d6b" />
 
+*Настройка VLAN на интерфейсах SwitchA*
+
 6) Создаем логическую линию, а так же выполняем настройку номеров телефонов
 
 <img width="613" height="194" alt="image" src="https://github.com/user-attachments/assets/80be96ad-6aed-488c-8d8e-70edb4f2415b" />
 
+*Создание логической линии и настройка номеров телефонов*
 
 Конфигурация устройств:
 
@@ -482,49 +494,73 @@ CME: встроена в маршрутизатор, до ~240 абоненто�
 
 <img width="556" height="408" alt="image" src="https://github.com/user-attachments/assets/62820e80-11c3-419a-8732-6cdcb8dc724a" />
 
+*Топология сети*
+
 2) Меняем название	маршрутизатора на CMERouter.
 
 <img width="307" height="42" alt="image" src="https://github.com/user-attachments/assets/ce7ba5d2-34e2-4367-9dc3-939d16cef345" />
+
+*Изменение имени маршрутизатора на CMERouter*
 
 Отключаем синтаксис ввода слов от DNS серверов:
 
 <img width="358" height="43" alt="image" src="https://github.com/user-attachments/assets/29fcd2c6-9ddc-4080-ba98-41897b21c0a9" />
 
+*Отключение синтаксиса ввода слов от DNS серверов*
+
 3) Задаём	пароли	для	защиты	маршрутизатора как в удаленном режиме, так и в режиме консоли:
 
 <img width="398" height="151" alt="image" src="https://github.com/user-attachments/assets/5727c771-381a-4545-980b-8847202e54c3" />
+
+*Задание паролей для защиты маршрутизатора в удаленном режиме и режиме консоли*
 
 4)	Настроим	интерфейс	fa0/0	на	CMERouter.
 
 <img width="614" height="183" alt="image" src="https://github.com/user-attachments/assets/5860dfba-5c1f-4b5b-89e0-9bae8a896904" />
 
+*Настройка интерфейса fa0/0 на CMERouter*
+
 5) Настраиваем DHCP	сервера
 
 <img width="484" height="141" alt="image" src="https://github.com/user-attachments/assets/c0987417-2d68-42d1-bb1f-64bb0847941e" />
+
+*Настройка DHCP сервера*
 
 6) Настраиваем	услуги	телефонии	Cisco	CallManager	Express	на CMERouter.
 
 <img width="580" height="168" alt="image" src="https://github.com/user-attachments/assets/3bf5385b-9194-4fcb-8699-8f9294452ee1" />
 
+*Настройка услуг телефонии Cisco CallManager Express на CMERouter*
+
 7) Настраиваем порты SwitchA
 
 <img width="427" height="118" alt="image" src="https://github.com/user-attachments/assets/d316100e-a545-4658-b7e2-ddd888f585fc" />
+
+*Настройка портов SwitchA*
 
 8) Создаем логическую линию, а так же выполняем настройку номеров телефонов
 
 <img width="786" height="303" alt="image" src="https://github.com/user-attachments/assets/2d98908d-b69f-4725-8993-c1d670230a72" />
 
+*Создание логической линии и настройка номеров телефонов*
+
 9) Подключаем телефоны к питанию:
 
 <img width="682" height="441" alt="image" src="https://github.com/user-attachments/assets/948ae96c-02ee-4f1b-890f-3a7ece833cf6" />
+
+*Подключение телефонов к питанию*
 
 10) Выполняем звонок на внутренние номера
 
 <img width="1383" height="658" alt="image" src="https://github.com/user-attachments/assets/858c3621-2f25-4700-862a-15fb96c23ebc" />
 
+*Выполнение звонка на внутренние номера*
+
 11) Выполняем ping на телефоны c CMERouter.
 
 <img width="628" height="358" alt="image" src="https://github.com/user-attachments/assets/d700eb02-e632-492d-9516-b0acab1e7f48" />
+
+*Выполнение ping на телефоны c CMERouter*
 
 Конфигурация устройств:
 
@@ -1074,25 +1110,37 @@ option 150 ip 192.168.10.1-опция для TFTP-сервера CME.
 
 <img width="708" height="521" alt="image" src="https://github.com/user-attachments/assets/0c898e40-a543-4c24-9240-3c845037834e" />
 
+*Топология сети*
+
 1) Создание vlan и присвоение им наименований. 
 
 <img width="616" height="252" alt="image" src="https://github.com/user-attachments/assets/0d35cab2-cc5e-4e7a-8a63-7b7a931e1c8a" />
+
+*Создание VLAN и присвоение им наименований*
 
 2) Настройка vlan 99:
 
 <img width="520" height="180" alt="image" src="https://github.com/user-attachments/assets/27148c4f-f44a-4f19-8de5-8c5366fb760f" />
 
+*Настройка VLAN 99*
+
 3) Задаём маршрут по умолчанию
 
 <img width="468" height="121" alt="image" src="https://github.com/user-attachments/assets/1fc3dd68-7129-4a61-bcdd-6ac746299b20" />
+
+*Задание маршрута по умолчанию*
 
 4) Настройка интерфейса управления коммутатором в сети VLAN через назначение диапазона портов:
 
 <img width="502" height="134" alt="image" src="https://github.com/user-attachments/assets/ab8e7f76-c593-47f1-ab5b-bfd664744fcc" />
 
+*Настройка интерфейса управления коммутатором в сети VLAN через назначение диапазона портов*
+
 5) Включаем интерфейс F0/0:
 
 <img width="626" height="247" alt="image" src="https://github.com/user-attachments/assets/e19f7075-3cb4-4370-8eda-9fdc56f37f3d" />
+
+*Включение интерфейса F0/0*
 
 6) Создаем логический подинтерфейсы для VLAN 10, VLAN 20, VLAN 99: 
 
@@ -1112,19 +1160,27 @@ option 150 ip 192.168.10.1-опция для TFTP-сервера CME.
 
 <img width="560" height="47" alt="image" src="https://github.com/user-attachments/assets/f42dafac-102a-4a92-b7c3-d5ba49fc511f" />
 
+*Исключение из пула адреса интерфейса маршрутизатора и DNS-сервера*
+
 8) Настраиваем	DHCP	сервера	для	передачи	голоса	и	данных	на маршрутизаторе Cisco 2811:
 
 <img width="488" height="190" alt="image" src="https://github.com/user-attachments/assets/011106b2-4c6b-4ef8-a84e-613ff56aac22" />
+
+*Настройка DHCP серверов для передачи голоса и данных на маршрутизаторе Cisco 2811*
 
 9) Настройка телефонного сервиса в автоматическом режиме: 
 
 <img width="564" height="97" alt="image" src="https://github.com/user-attachments/assets/33e98a84-b5ee-4ee4-b447-0d89f67353b2" />
 
+*Настройка телефонного сервиса в автоматическом режиме*
+
 10) Присваиваем номера для всех IP-телефонов в сети: 
 
 <img width="649" height="244" alt="image" src="https://github.com/user-attachments/assets/b8b81acb-3e6a-4d13-aae0-6aeca4b29135" />
 
-*Настройка данных телефонов*
+*Присвоение номеров для всех IP-телефонов в сети и настройка данных телефонов*
+
+Настройка данных телефонов
 
 <img width="581" height="237" alt="image" src="https://github.com/user-attachments/assets/ace12fa5-3c9c-4c43-b701-f02abf5f8c76" />
 
@@ -1637,57 +1693,85 @@ VoIP-телефон-это то же, что IP-телефон-устройст�
 
 <img width="829" height="571" alt="image" src="https://github.com/user-attachments/assets/426b4f6c-e30f-487d-b1bb-23ac7b3767d8" />
 
+*Топология сети*
+
 1) Меняем	название	маршрутизаторов на RouterA и RouterB:
 
 <img width="641" height="48" alt="image" src="https://github.com/user-attachments/assets/ec1731c1-3b96-4a11-8878-9f22cc8c6d78" />
+
+*Изменение названия маршрутизаторов на RouterA и RouterB*
 
 2) Конфигурация интерфейса fa0/0 на RouterA и RouterB: 
 
 <img width="1177" height="229" alt="image" src="https://github.com/user-attachments/assets/398409d7-6d2b-4654-92e9-5fa1aeaa273b" />
 
+*Конфигурация интерфейса fa0/0 на RouterA и RouterB*
+
 3) Конфигурация интерфейса fa0/0 на маршрутизаторе RouterB: 
 
 <img width="648" height="198" alt="image" src="https://github.com/user-attachments/assets/12af3b36-e523-4dec-8ae3-b89f2cc61e0b" />
+
+*Конфигурация интерфейса fa0/0 на маршрутизаторе RouterB*
 
 4) Конфигурация интерфейса s0/3/0 на маршрутизаторах Cisco 2811: 
 
 <img width="1345" height="280" alt="image" src="https://github.com/user-attachments/assets/4d000eef-9f59-4757-99bb-9ebad78c69d8" />
 
+*Конфигурация интерфейса s0/3/0 на маршрутизаторах Cisco 2811*
+
 5) Создаём пулы DHCP адреса с названием Т1/T2:
 
 <img width="1291" height="169" alt="image" src="https://github.com/user-attachments/assets/3c0324dd-2bf0-43f3-bb60-fbec8ad4b15f" />
+
+*Создание пулов DHCP адреса с названием Т1/T2*
 
 6) Настройка протокола RIPv2 на RouterA и RouterB:
 
 <img width="1117" height="87" alt="image" src="https://github.com/user-attachments/assets/ce08ad33-6602-4221-8478-0699b373fd79" />
 
+*Настройка протокола RIPv2 на RouterA и RouterB*
+
 7) Настройка CallManager Express на RouterA и RouterB:
 
 <img width="1356" height="239" alt="image" src="https://github.com/user-attachments/assets/b0fa26f3-0670-48bc-afad-84014a76dfbc" />
+
+*Настройка CallManager Express на RouterA и RouterB*
 
 8) Меняем имена коммутаторов
 
 <img width="642" height="45" alt="image" src="https://github.com/user-attachments/assets/830539d1-921f-4f94-9bfa-33ade877ab64" />
 
+*Изменение имен коммутаторов*
+
 9) Настраиваем порты на SwitchA и SwitchB
 
 <img width="892" height="96" alt="image" src="https://github.com/user-attachments/assets/5a23ca0f-88e4-47ad-9baa-68709fb65cd2" />
+
+*Настройка портов на SwitchA и SwitchB*
 
 10) Настраиваем логические линии связи, указываем номера для телефонов
 
 <img width="1345" height="334" alt="image" src="https://github.com/user-attachments/assets/e420f102-5d75-405b-b4c1-fe7dc98d13c8" />
 
+*Настройка логических линий связи и указание номеров для телефонов*
+
 11) Настраиваем RouterA и RouterB для идентификации конечных точек вызова
 
 <img width="1002" height="117" alt="image" src="https://github.com/user-attachments/assets/bb0d79a5-dd75-4e62-a4d4-379ff615ebfa" />
+
+*Настройка RouterA и RouterB для идентификации конечных точек вызова*
 
 12) Проверка пинга
 
 <img width="523" height="198" alt="image" src="https://github.com/user-attachments/assets/a0f62f31-a7b8-4736-9d51-9a132952f71a" />
 
+*Проверка пинга*
+
 13) Проверка вызова c телефонов
 
 <img width="1220" height="414" alt="image" src="https://github.com/user-attachments/assets/097bc012-5ad2-420b-a0ff-3d3a9450d44f" />
+
+*Проверка вызова c телефонов*
 
 Конфигурация устройств:
 #### RouterA
@@ -2619,85 +2703,126 @@ RouterA(config-ephone-dn)#number 1101
 
 <img width="675" height="530" alt="image" src="https://github.com/user-attachments/assets/29886a80-cda1-4611-a6d6-b3171bd65ce2" />
 
+*Топология сети*
+
 Меняем имена роутеров:
 
 <img width="663" height="33" alt="image" src="https://github.com/user-attachments/assets/7073228f-97cc-47b0-8beb-17b727448ecf" />
+
+*Изменение имен роутеров*
 
 Настраиваем порт в сторону коммутатора (CMERouter)
 
 <img width="614" height="217" alt="image" src="https://github.com/user-attachments/assets/d327bc10-665c-459b-b163-24b2c3e30abb" />
 
+*Настройка порта в сторону коммутатора (CMERouter)*
+
 Настраиваем DHCP-сервер для телефонов и ПК в центральном офисе:
 
 <img width="621" height="87" alt="image" src="https://github.com/user-attachments/assets/530c3d4a-c785-4c5c-a45b-f3a003ec4e58" />
+
+*Настройка DHCP-сервера для телефонов и ПК в центральном офисе*
 
 Включаем сервис IP-телефонии (CallManager Express):
 
 <img width="597" height="111" alt="image" src="https://github.com/user-attachments/assets/8debedc1-d71d-4285-9ca5-bff0dc07f707" />
 
+*Включение сервиса IP-телефонии*
+
 Создаем номера и "привязываем" их к телефонам по MAC-адресу:
 
 <img width="659" height="477" alt="image" src="https://github.com/user-attachments/assets/2aa94f07-d1ad-4297-9692-abd7f9cc4dc7" />
+
+*Создание номеров и привязка их к телефонам по MAC-адресу*
 
 Настраиваем порт в сторону CMERouter (Serial0/3/0):
 
 <img width="565" height="145" alt="image" src="https://github.com/user-attachments/assets/e008fbae-5fc7-4b19-abf9-086b9d1972fb" />
 
+*Настройка порта в сторону CMERouter (Serial0/3/0)*
+
 Настройка статической маршрутизации:
 
 <img width="507" height="38" alt="image" src="https://github.com/user-attachments/assets/3592b9e3-2a78-4279-81c4-5c0320dfe7d8" />
 
+*Настройка статической маршрутизации*
+
 Настройка RemoteRouter (Удаленный офис)
 Проделываем аналогичные шаги, но с другими IP-адресами.
-
 Настройка порта в сторону коммутатора
 
 <img width="573" height="90" alt="image" src="https://github.com/user-attachments/assets/6e4ca260-7f2f-4dd0-b6c1-1d35189b64ca" />
+
+*Настройка порта в сторону коммутатора (RemoteRouter)*
 
 Настройка DHCP-сервера для удаленного офиса
 
 <img width="584" height="103" alt="image" src="https://github.com/user-attachments/assets/cfc27520-bfca-4c74-9905-98d63eee4d4a" />
 
+*Настройка DHCP-сервера для удаленного офиса*
+
 Включение сервиса IP-телефонии
 
 <img width="633" height="101" alt="image" src="https://github.com/user-attachments/assets/13067949-fc6b-45ba-a027-c5680fd08109" />
+
+*Включение сервиса IP-телефонии (RemoteRouter)*
 
 Настройка третьего телефона (IP Phone2) с MAC-адресом, например, 0003.ABCD.9101
 
 <img width="821" height="280" alt="image" src="https://github.com/user-attachments/assets/e50d0720-972e-488a-96e6-8493fd90ede7" />
 
+*Настройка третьего телефона (IP Phone2)*
+
 Настройка порта в сторону Router0 (Serial0/3/0)
 
 <img width="554" height="128" alt="image" src="https://github.com/user-attachments/assets/4112c89b-aee5-44f5-8c4f-ffdc9934d102" />
 
+*Настройка порта в сторону Router0 (Serial0/3/0)*
+
 Настройка статической маршрутизации в обратную сторону
 
 <img width="594" height="35" alt="image" src="https://github.com/user-attachments/assets/a837943e-51d0-44d6-9efe-13f6d013c97d" />
+
+*Настройка статической маршрутизации в обратную сторону*
 
 Настройка Multilayer SwitchA и SwitchB
 Переименовываем
 
 <img width="1059" height="51" alt="image" src="https://github.com/user-attachments/assets/c7486c49-bb46-4778-88a4-b0568c395a1f" />
 
+*Переименование Multilayer SwitchA и SwitchB*
+
 Настройки безопасности для SwitchA и SwitchB
 
 <img width="1330" height="337" alt="image" src="https://github.com/user-attachments/assets/31a3c46b-7d7c-43b6-8771-011c10f134b0" />
+
+*Настройки безопасности для SwitchA и SwitchB*
 
 Настройка правил набора номеров для связи между удалёнными офисами
 
 <img width="1182" height="150" alt="image" src="https://github.com/user-attachments/assets/92f9df40-71b0-4d13-a8c3-94d49d390096" />
 
+*Настройка правил набора номеров для связи между удалёнными офисами*
+
 Проверяем IP-телефоны:
 
 <img width="721" height="269" alt="image" src="https://github.com/user-attachments/assets/dd714724-0e0b-4629-969d-3201dd0dbf80" />
 
+*Проверка IP-телефонов*
+
 <img width="644" height="266" alt="image" src="https://github.com/user-attachments/assets/3326a0fd-c7cb-40fb-8e57-b9e8ea291a8a" />
 
+*Проверка IP-телефонов*
+
 <img width="709" height="198" alt="image" src="https://github.com/user-attachments/assets/67b70814-22a1-43a3-b897-4b6abadd4e7f" />
+
+*Проверка IP-телефонов*
 
 Звонок прошёл 
 
 <img width="1351" height="644" alt="image" src="https://github.com/user-attachments/assets/ee8a5cdb-ec5e-491e-9ac3-b6f01cdf2e05" />
+
+*Успешный звонок*
 
 Конфигурация устройств:
 #### CMERouter
@@ -3671,7 +3796,7 @@ end
 LDP (Label Distribution Protocol)-протокол распределения меток в MPLS-сетях. Он используется для установления и поддержания таблиц коммутации по меткам между соседними маршрутизаторами LSR.
 
 6. Уровни архитектуры IP-телефонии.
-Выделяют три уровня: уровень сигнализации (установление и завершение вызовов — SIP, H.323), уровень передачи голоса (транспорт RTP/UDP) и уровень кодирования/декодирования (кодеки G.711, G.729).
+Выделяют три уровня: уровень сигнализации (установление и завершение вызовов — SIP, H.323), уровень передачи голоса (транспорт RTP/UDP) и уровень кодирования/декодирования.
 
 7. Как можно выйти в сеть PSTN через IP телефон?
 Через маршрутизатор с интерфейсами FXO или FXS, подключенный к телефонной сети общего пользования.
