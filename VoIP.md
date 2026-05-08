@@ -11,6 +11,7 @@
 
 <img width="316" height="35" alt="image" src="https://github.com/user-attachments/assets/485ce061-0cb6-4203-9620-4b4ec9928b0d" />
 
+
 Отключаем синтаксис ввода слов от DNS серверов:
 
 <img width="342" height="39" alt="image" src="https://github.com/user-attachments/assets/ad1ce8d6-e655-436d-b4bf-aea5b75404d3" />
